@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SWAG 積分系統 Demo</title>
+  <title>SWAG 主播積分中心</title>
   <style>
     :root {
       --bg: #0c0d11;
@@ -458,7 +458,7 @@
         <div class="brand-mark">S</div>
         <div>
           <div class="brand-title">SWAG 積分系統 Demo</div>
-          <div class="brand-sub">主播端與管理後台分離版 Demo</div>
+          <div class="brand-sub">用積分兌換妳喜歡的獎勵</div>
         </div>
       </div>
       <div class="view-switch">
@@ -471,10 +471,10 @@
   <section class="container hero creator-only">
     <div class="hero-grid">
       <div class="card hero-main">
-        <div class="eyebrow">Creator Reward Wallet</div>
-        <div class="hero-title">把原本的「加扣分」改造成可累積、可兌換、可轉鑽石的主播積分系統</div>
+        <div class="eyebrow">我的積分錢包</div>
+        <div class="hero-title">直播累積的努力，都能變成妳的專屬積分</div>
         <div class="hero-desc">
-          這版 Demo 以 moor 主播端實際使用情境去重做。核心邏輯是：保留「積分明細」與「取得方式」，再額外加入三個功能模組：獎勵商城、鑽石動態轉換器、夢想實現許願池。讓主播即使覺得官方獎勵吸引力不足，也仍然有退路可以把積分換成鑽石，但比值刻意設計得較差，優先引導主播兌換更高價值的曝光與體驗型獎勵。
+          妳可以把累積的積分用來兌換站內曝光、體驗活動或精選禮物；若暫時沒有想兌換的內容，也能選擇把部分積分換成鑽石，保留更多彈性。
         </div>
         <div class="wallet-grid">
           <div class="wallet-balance">
@@ -502,15 +502,15 @@
       </div>
       <div class="card hero-side">
         <div class="side-item">
-          <strong>這版重構重點 1：主播端頁面拆成獨立模組</strong>
+          <strong>積分可以怎麼使用？</strong>
           <span>不再把商城、明細、轉換、許願混在同一頁，而是以 moor 內頁概念做四個子頁面切換。</span>
         </div>
         <div class="side-item">
-          <strong>這版重構重點 2：允許換回鑽石，但故意不划算</strong>
+          <strong>也可以選擇換成鑽石</strong>
           <span>讓主播有保底出口，降低被白嫖感，同時用顯示比值提醒去引導優先兌換官方高價值獎勵。</span>
         </div>
         <div class="side-item">
-          <strong>這版重構重點 3：加上夢想實現許願池</strong>
+          <strong>商城沒有想要的？可以直接許願</strong>
           <span>若商城獎勵不夠吸引，主播可主動提交想兌換的內容，後台統一審核、報價與回覆。</span>
         </div>
       </div>
@@ -552,7 +552,7 @@
           <div class="screen-top">
             <div>
               <div class="screen-title">獎勵商城</div>
-              <div class="screen-sub">主播端主頁，優先引導用積分兌換高感知價值獎勵，而不是先去換鑽石。</div>
+              <div class="screen-sub">先看看有哪些獎勵可以兌換，從曝光資源到體驗活動，都能用積分帶回去。</div>
             </div>
             <div class="top-actions">
               <button class="btn btn-ghost">查看我的申請</button>
@@ -588,7 +588,7 @@
           <div class="screen-top">
             <div>
               <div class="screen-title">鑽石動態轉換器</div>
-              <div class="screen-sub">給主播的保底出口。可直接用積分換平台鑽石，但比值刻意較差，避免反向破壞商城吸引力。</div>
+              <div class="screen-sub">若妳想保留彈性，可以把部分積分換成鑽石；不過與其他獎勵相比，直接兌換鑽石的整體價值會較低。</div>
             </div>
             <div class="top-actions">
               <button class="btn btn-ghost">查看轉換紀錄</button>
@@ -643,7 +643,7 @@
           <div class="screen-top">
             <div>
               <div class="screen-title">夢想實現許願池</div>
-              <div class="screen-sub">如果商城裡沒有妳想要的獎勵，就在這裡提案，由官方後台評估是否可執行。</div>
+              <div class="screen-sub">如果商城裡還沒有妳喜歡的獎勵，歡迎在這裡提交願望，官方會協助評估是否能安排。</div>
             </div>
             <div class="top-actions">
               <button class="btn btn-ghost">我的許願紀錄</button>
@@ -690,7 +690,7 @@
           <div class="screen-top">
             <div>
               <div class="screen-title">積分明細</div>
-              <div class="screen-sub">承接原本 moor 的「加扣分明細」概念，但重新定義為積分帳本、來源與到期管理。</div>
+              <div class="screen-sub">這裡會顯示妳每一筆積分的取得、使用與到期資訊，方便隨時查詢。</div>
             </div>
             <div class="top-actions">
               <button class="btn btn-ghost">下載明細</button>
@@ -718,7 +718,7 @@
               <div class="panel-head">
                 <div>
                   <div class="panel-title">我的兌換 / 轉換申請</div>
-                  <div class="panel-sub">把商城、轉鑽、許願池都收斂成同一個申請與狀態區。</div>
+                  <div class="panel-sub">妳送出的兌換、鑽石轉換與許願申請，都會統一顯示在這裡。</div>
                 </div>
               </div>
               <div class="list" id="redeemList"></div>

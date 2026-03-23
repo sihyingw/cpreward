@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>許願池｜SWAG 主播積分中心</title>
+  <style>
+    :root {
+      --bg: #0b0d11;
+      --panel: #171a20;
+      --panel-2: #1f232c;
+      --line: rgba(64, 255, 234, 0.18);
+      --brand: #2fe0d0;
+      --brand-strong: #20cdbc;
+      --text: #f5f7fb;
+      --muted: #9aa3b2;
+      --shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --radius-md: 16px;
+      --radius-sm: 12px;
+      --max: 720px;
+    }
+
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      background:
+        radial-gradient(circle at top, rgba(47,224,208,0.08), transparent 28%),
+        linear-gradient(180deg, #0a0c10 0%, #11151d 100%);
+      color: var(--text);
+      font-family: Inter, "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+    }
+
+    .page {
+      width: min(100%, var(--max));
+      margin: 0 auto;
+      padding: 18px 16px 32px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text);
+      text-decoration: none;
+      font-size: 14px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .brand {
+      font-size: 13px;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+
+    .shell {
+      background: linear-gradient(180deg, rgba(30,34,42,0.96) 0%, rgba(22,25,31,0.96) 100%);
+      border: 1px solid var(--line);
+      border-radius: 32px;
+      box-shadow: var(--shadow);
+      padding: 26px 18px 24px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .shell::before {
+      content: "";
+      position: absolute;
+      top: -120px;
+      right: -60px;
+      width: 240px;
+      height: 240px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(47,224,208,0.12), transparent 68%);
+      pointer-events: none;
+    }
+
+    .hero {
+      text-align: center;
+      padding-top: 8px;
+    }
+
+    .hero-icon {
+      width: 84px;
+      height: 84px;
+      margin: 0 auto 18px;
+      border-radius: 28px;
+      display: grid;
+      place-items: center;
+      font-size: 38px;
+      color: var(--brand);
+      background: rgba(47, 224, 208, 0.12);
+      box-shadow: inset 0 0 0 1px rgba(47,224,208,0.08);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 34px;
+      line-height: 1.12;
+      letter-spacing: -0.03em;
+    }
+
+    .desc {
+      margin: 14px auto 0;
+      max-width: 540px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    .form {
+      margin-top: 28px;
+      display: grid;
+      gap: 18px;
+    }
+
+    .field {
+      display: grid;
+      gap: 10px;
+    }
+
+    .field-head {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .field label {
+      font-size: 13px;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .field small {
+      color: #6f7886;
+      font-size: 12px;
+    }
+
+    .input,
+    .textarea,
+    .select {
+      width: 100%;
+      border: 1px solid rgba(255,255,255,0.06);
+      background: #050607;
+      color: var(--text);
+      border-radius: 18px;
+      padding: 16px;
+      outline: none;
+      font-size: 15px;
+    }
+
+    .input::placeholder,
+    .textarea::placeholder {
+      color: #646d79;
+    }
+
+    .textarea {
+      min-height: 150px;
+      resize: vertical;
+      line-height: 1.7;
+    }
+
+    .tips {
+      margin-top: 4px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 18px;
+      padding: 16px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .tips strong {
+      color: #dffdfa;
+    }
+
+    .example-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .tag {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(47,224,208,0.08);
+      border: 1px solid rgba(47,224,208,0.16);
+      color: #cafff9;
+      font-size: 12px;
+    }
+
+    .primary-btn {
+      width: 100%;
+      margin-top: 8px;
+      border: none;
+      border-radius: 22px;
+      background: var(--brand);
+      color: #081c1a;
+      font-weight: 900;
+      font-size: 17px;
+      padding: 18px 20px;
+      cursor: pointer;
+      box-shadow: 0 14px 28px rgba(47,224,208,0.24);
+    }
+
+    .footnote {
+      margin-top: 16px;
+      color: #7e8794;
+      font-size: 12px;
+      line-height: 1.8;
+      text-align: center;
+    }
+
+    @media (max-width: 560px) {
+      h1 { font-size: 28px; }
+      .shell {
+        border-radius: 26px;
+        padding: 22px 14px 20px;
+      }
+      .input,
+      .textarea,
+      .select {
+        padding: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="topbar">
+      <a class="back-btn" href="index.html">← 返回積分中心</a>
+      <div class="brand">SWAG 主播積分中心</div>
+    </div>
+
+    <section class="shell">
+      <div class="hero">
+        <div class="hero-icon">✦</div>
+        <h1>夢想實現許願池</h1>
+        <div class="desc">
+          如果你想要的獎勵目前不在商城中，也歡迎你提交願望。
+          官方會依照需求熱度、可執行性與預算規劃，評估是否納入後續獎勵池或作為限時兌換項目。
+        </div>
+      </div>
+
+      <form class="form">
+        <div class="field">
+          <div class="field-head">
+            <label for="itemName">Item Name</label>
+            <small>想許願的獎勵名稱</small>
+          </div>
+          <input
+            id="itemName"
+            class="input"
+            type="text"
+            placeholder="例如：某品牌按摩課程、Dyson 吹風機、東京拍攝旅遊..."
+          />
+        </div>
+
+        <div class="field">
+          <div class="field-head">
+            <label for="description">Description</label>
+            <small>補充說明</small>
+          </div>
+          <textarea
+            id="description"
+            class="textarea"
+            placeholder="可以補充你想要的規格、品牌、預算方向、參考連結，或你希望這個獎勵如何被安排。"
+          ></textarea>
+        </div>
+
+        <div class="field">
+          <div class="field-head">
+            <label for="pointsRange">Expected Points</label>
+            <small>你預估願意用多少積分兌換</small>
+          </div>
+          <select id="pointsRange" class="select">
+            <option>5,000 Points 以下</option>
+            <option>5,001 - 15,000 Points</option>
+            <option>15,001 - 30,000 Points</option>
+            <option>30,001 - 60,000 Points</option>
+            <option>60,001 - 100,000 Points</option>
+            <option>100,000 Points 以上</option>
+            <option>不確定，想先提案看看</option>
+          </select>
+        </div>
+
+        <div class="tips">
+          <strong>提交後會怎麼處理？</strong><br />
+          你的願望將進入官方評估清單，用來幫助我們了解主播真正想要的獎勵方向。
+          許願不代表立即上架或保證可兌換，但若需求足夠集中，未來有機會成為正式獎勵、期間限定項目，或由官方主動聯繫你進一步確認。
+          <div class="example-tags">
+            <span class="tag">精品 / 家電</span>
+            <span class="tag">按摩 / 醫美 / 保養</span>
+            <span class="tag">演唱會 / 票券</span>
+            <span class="tag">旅遊 / 拍攝企劃</span>
+          </div>
+        </div>
+
+        <button type="button" class="primary-btn">送出願望</button>
+      </form>
+
+      <div class="footnote">
+        若提交內容涉及限量商品、票券或特殊品牌，實際是否可執行仍需依官方採購、檔期與供應情況評估。
+      </div>
+    </section>
+  </div>
+</body>
+</html>

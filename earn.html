@@ -3,28 +3,26 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SWAG 主播積分中心</title>
+  <title>如何取得積分｜SWAG 主播積分中心
+<div style="margin-top:10px;">
+<a href="creator-points-earn.html" style="display:inline-block;padding:10px 14px;border-radius:999px;background:rgba(47,224,209,0.15);border:1px solid rgba(47,224,209,0.35);color:#9ffff6;font-size:13px;font-weight:700;text-decoration:none;">如何取得積分</a>
+</div></title>
   <style>
     :root {
       --bg: #0c0d11;
       --panel: #17191f;
       --panel-2: #1d2028;
-      --panel-3: #101217;
       --line: rgba(255,255,255,0.08);
       --text: #f5f7fb;
       --muted: #9aa3b5;
       --brand: #2fe0d1;
       --brand-2: #7ef8ee;
-      --danger: #ff6f91;
-      --warning: #ffb95e;
-      --ok: #7be38f;
-      --glow: 0 0 0 1px rgba(47,224,209,0.15), 0 14px 35px rgba(47,224,209,0.14);
       --shadow: 0 18px 50px rgba(0,0,0,0.28);
       --radius-xl: 28px;
       --radius-lg: 22px;
       --radius-md: 16px;
       --radius-sm: 12px;
-      --max: 1360px;
+      --max: 1100px;
     }
 
     * { box-sizing: border-box; }
@@ -38,59 +36,47 @@
       font-family: Inter, "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
     }
     a { color: inherit; text-decoration: none; }
-    button, input, textarea, select { font: inherit; }
-    .container { width: min(calc(100% - 28px), var(--max)); margin: 0 auto; }
-    .hidden { display: none !important; }
+    .container { width: min(calc(100% - 24px), var(--max)); margin: 0 auto; }
 
     .topbar {
-      position: sticky; top: 0; z-index: 80;
+      position: sticky; top: 0; z-index: 30;
       background: rgba(8,10,14,0.82);
       backdrop-filter: blur(18px);
       border-bottom: 1px solid rgba(255,255,255,0.06);
     }
     .topbar-inner {
-      display: flex; align-items: center; justify-content: space-between; gap: 14px;
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
       padding: 14px 0;
     }
     .brand { display: flex; align-items: center; gap: 12px; }
     .brand-mark {
-      width: 42px; height: 42px; border-radius: 14px;
+      width: 40px; height: 40px; border-radius: 14px;
       display: grid; place-items: center; font-weight: 900;
       background: linear-gradient(135deg, var(--brand), #0f8279);
       color: #072523; box-shadow: 0 12px 30px rgba(47,224,209,0.22);
     }
     .brand-title { font-size: 18px; font-weight: 800; }
     .brand-sub { font-size: 12px; color: var(--muted); margin-top: 2px; }
-
-    .view-switch {
-      display: inline-flex; gap: 6px; padding: 4px;
-      background: #12151c; border: 1px solid var(--line); border-radius: 999px;
-    }
-    .view-btn {
-      border: 0; background: transparent; color: var(--muted); cursor: pointer;
-      padding: 10px 14px; border-radius: 999px; transition: .2s ease;
-    }
-    .view-btn.active {
-      background: linear-gradient(135deg, #84fff3, var(--brand)); color: #062624; font-weight: 800;
+    .back-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 10px 14px; border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.08); color: var(--muted);
+      background: rgba(255,255,255,0.02); font-size: 14px;
     }
 
     .hero {
-      padding: 22px 0 16px;
+      padding: 26px 0 18px;
     }
-    .hero-grid {
-      display: grid; grid-template-columns: 1.2fr .8fr; gap: 18px;
-    }
-    .card {
+    .hero-card {
+      position: relative; overflow: hidden;
+      padding: 28px;
+      border-radius: var(--radius-xl);
       background: linear-gradient(180deg, rgba(28,31,40,0.94) 0%, rgba(17,20,27,0.96) 100%);
       border: 1px solid rgba(255,255,255,0.06);
-      border-radius: var(--radius-xl);
       box-shadow: var(--shadow);
     }
-    .hero-main {
-      padding: 28px; position: relative; overflow: hidden;
-    }
-    .hero-main::after {
-      content: ""; position: absolute; right: -70px; top: -80px; width: 260px; height: 260px; border-radius: 50%;
+    .hero-card::after {
+      content: ""; position: absolute; right: -80px; top: -80px; width: 260px; height: 260px; border-radius: 50%;
       background: radial-gradient(circle, rgba(47,224,209,0.18), transparent 70%);
       pointer-events: none;
     }
@@ -99,355 +85,91 @@
       background: rgba(47,224,209,0.12); border: 1px solid rgba(47,224,209,0.24);
       color: #92fff4; font-size: 12px; font-weight: 800; letter-spacing: .05em; text-transform: uppercase;
     }
-    .hero-title { margin: 16px 0 10px; font-size: clamp(28px, 4vw, 42px); line-height: 1.08; }
-    .hero-desc { color: var(--muted); line-height: 1.9; font-size: 15px; max-width: 760px; }
-
-    .wallet-grid {
-      display: grid; grid-template-columns: 1.05fr .95fr; gap: 16px; margin-top: 22px;
+    .hero-title {
+      margin: 16px 0 10px; font-size: clamp(30px, 5vw, 46px); line-height: 1.08; letter-spacing: -0.03em;
     }
-    .wallet-balance {
-      padding: 20px; border-radius: 22px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
-    }
-    .label { color: var(--muted); font-size: 13px; }
-    .balance-value { font-size: clamp(36px, 5vw, 56px); font-weight: 900; letter-spacing: -0.03em; margin-top: 8px; }
-    .mini-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
-    .chip {
-      display: inline-flex; align-items: center; gap: 8px; padding: 10px 12px; border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.07); background: rgba(255,255,255,0.03); color: var(--muted); font-size: 13px;
-    }
-    .metrics { display: grid; gap: 12px; }
-    .metric-box {
-      padding: 18px; border-radius: 20px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
-    }
-    .metric-box .v { font-size: 28px; font-weight: 900; margin-top: 8px; }
-    .metric-box small { display: block; color: var(--muted); margin-top: 6px; }
-
-    .hero-side { padding: 22px; display: grid; gap: 12px; align-content: start; }
-    .side-item {
-      padding: 16px; border-radius: 20px; background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.06);
-    }
-    .side-item strong { display: block; font-size: 15px; }
-    .side-item span { display: block; margin-top: 6px; color: var(--muted); line-height: 1.75; font-size: 13px; }
-
-    .section {
-      padding: 8px 0 28px;
+    .hero-desc {
+      color: var(--muted); line-height: 1.9; font-size: 15px; max-width: 760px;
     }
 
-    .creator-shell {
-      display: grid; grid-template-columns: 280px 1fr; gap: 20px;
-      align-items: start;
-    }
-    .mobile-nav {
-      position: sticky; top: 82px; padding: 16px; border-radius: 26px;
-      background: linear-gradient(180deg, rgba(24,27,35,0.96), rgba(15,18,24,0.96));
-      border: 1px solid rgba(255,255,255,0.06); box-shadow: var(--shadow);
-    }
-    .mobile-header {
-      display: flex; align-items: center; gap: 12px; padding-bottom: 14px; border-bottom: 1px solid rgba(255,255,255,0.06);
-      margin-bottom: 14px;
-    }
-    .avatar {
-      width: 52px; height: 52px; border-radius: 50%; overflow: hidden; flex: 0 0 auto; border: 2px solid rgba(255,255,255,0.12);
-    }
-    .avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .mobile-name { font-size: 18px; font-weight: 800; }
-    .mobile-id { font-size: 12px; color: var(--muted); margin-top: 2px; }
-
-    .nav-group { display: grid; gap: 8px; }
-    .nav-btn {
-      display: flex; align-items: center; justify-content: space-between; gap: 12px;
-      width: 100%; border: 1px solid transparent; background: transparent; color: var(--text); cursor: pointer;
-      padding: 14px 14px; border-radius: 16px; text-align: left;
-    }
-    .nav-btn .left { display: flex; align-items: center; gap: 12px; }
-    .nav-btn .icon {
-      width: 36px; height: 36px; border-radius: 12px; display: grid; place-items: center;
-      background: rgba(255,255,255,0.04); color: var(--muted);
-    }
-    .nav-btn .text strong { display: block; font-size: 15px; }
-    .nav-btn .text span { display: block; color: var(--muted); font-size: 12px; margin-top: 2px; }
-    .nav-btn.active {
-      background: rgba(47,224,209,0.1); border-color: rgba(47,224,209,0.25); box-shadow: var(--glow);
-    }
-    .nav-btn.active .icon { background: rgba(47,224,209,0.18); color: #9efff6; }
-
-    .app-content { display: grid; gap: 18px; }
-    .screen {
-      padding: 18px; border-radius: 28px; background: linear-gradient(180deg, rgba(23,26,33,0.96), rgba(15,18,24,0.98));
-      border: 1px solid rgba(255,255,255,0.06); box-shadow: var(--shadow);
-    }
-    .screen-top {
-      display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 18px;
-      padding-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.06);
-    }
-    .screen-title { font-size: 26px; font-weight: 900; }
-    .screen-sub { color: var(--muted); font-size: 13px; margin-top: 4px; }
-    .top-actions { display: flex; gap: 10px; flex-wrap: wrap; }
-    .btn {
-      border: 0; border-radius: 16px; cursor: pointer; font-weight: 800; padding: 13px 18px; transition: .18s ease;
-    }
-    .btn-primary {
-      background: linear-gradient(135deg, #84fff3, var(--brand)); color: #052523; box-shadow: 0 12px 30px rgba(47,224,209,0.22);
-    }
-    .btn-ghost {
-      background: #12161f; color: var(--text); border: 1px solid rgba(255,255,255,0.08);
-    }
-    .btn:hover { transform: translateY(-1px); }
-
-    .summary-row {
-      display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 12px; margin-bottom: 18px;
+    .summary-grid {
+      margin-top: 22px;
+      display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 12px;
     }
     .summary-card {
       padding: 18px; border-radius: 20px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
     }
-    .summary-card .num { font-size: 28px; font-weight: 900; margin-top: 8px; }
-    .summary-card small { display: block; margin-top: 6px; color: var(--muted); }
+    .summary-card .k { color: var(--muted); font-size: 13px; }
+    .summary-card .v { font-size: 26px; font-weight: 900; margin-top: 8px; }
+    .summary-card small { display: block; color: var(--muted); margin-top: 6px; line-height: 1.7; }
 
-    .tabs {
-      display: flex; gap: 10px; overflow: auto; padding-bottom: 6px; margin-bottom: 16px;
+    .section {
+      padding: 8px 0 30px;
     }
-    .tab {
-      white-space: nowrap; border: 1px solid rgba(255,255,255,0.08); background: #12161f; color: var(--muted);
-      padding: 11px 14px; border-radius: 999px; cursor: pointer;
+    .section-head {
+      display: flex; align-items: end; justify-content: space-between; gap: 12px; margin-bottom: 14px;
     }
-    .tab.active {
-      background: rgba(47,224,209,0.14); color: #bffff8; border-color: rgba(47,224,209,0.28);
-    }
+    .section-title { font-size: 28px; font-weight: 900; }
+    .section-sub { color: var(--muted); font-size: 14px; line-height: 1.8; }
 
-    .store-grid {
-      display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 16px;
+    .grid {
+      display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 16px;
     }
-    .reward-card {
-      border-radius: 24px; overflow: hidden; background: linear-gradient(180deg, rgba(27,30,37,0.96), rgba(17,20,26,0.98));
-      border: 1px solid rgba(255,255,255,0.06); display: flex; flex-direction: column; min-height: 350px;
+    .card {
+      background: linear-gradient(180deg, rgba(28,31,40,0.94) 0%, rgba(17,20,27,0.96) 100%);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      padding: 22px;
     }
-    .reward-cover {
-      position: relative; min-height: 150px; padding: 18px;
-      background: linear-gradient(135deg, rgba(47,224,209,0.18), rgba(255,255,255,0.04));
-      border-bottom: 1px solid rgba(255,255,255,0.06);
+    .card-head {
+      display: flex; align-items: center; gap: 14px; margin-bottom: 14px;
     }
-    .reward-category {
-      display: inline-flex; padding: 8px 10px; border-radius: 999px; font-size: 12px;
-      background: rgba(12,15,20,0.45); border: 1px solid rgba(255,255,255,0.08); color: #d8fffb;
+    .icon {
+      width: 52px; height: 52px; border-radius: 16px; display: grid; place-items: center;
+      background: rgba(47,224,209,0.12); color: var(--brand-2); font-size: 24px; flex: 0 0 auto;
     }
-    .reward-tag {
-      position: absolute; top: 18px; right: 18px; padding: 8px 10px; border-radius: 999px;
-      background: linear-gradient(135deg, #8dfff4, var(--brand)); color: #052523; font-size: 12px; font-weight: 900;
+    .card-title { font-size: 22px; font-weight: 900; }
+    .card-desc { color: var(--muted); font-size: 14px; line-height: 1.8; }
+    .point-box {
+      margin-top: 16px; padding: 16px; border-radius: 18px;
+      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
     }
-    .reward-icon { position: absolute; right: 18px; bottom: 14px; font-size: 44px; }
-    .reward-body { padding: 18px; display: grid; gap: 14px; flex: 1; }
-    .reward-name { font-size: 20px; font-weight: 900; line-height: 1.3; }
-    .reward-desc { color: var(--muted); line-height: 1.78; font-size: 14px; min-height: 72px; }
-    .meta-row { display: flex; gap: 8px; flex-wrap: wrap; }
-    .pill {
+    .point-box .label { color: var(--muted); font-size: 12px; }
+    .point-box .value { font-size: 24px; font-weight: 900; margin-top: 8px; }
+    .point-box .hint { color: var(--muted); font-size: 13px; margin-top: 8px; line-height: 1.7; }
+    .chips { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
+    .chip {
       padding: 8px 10px; border-radius: 999px; background: rgba(255,255,255,0.03);
       border: 1px solid rgba(255,255,255,0.06); color: var(--muted); font-size: 12px;
     }
-    .reward-footer { display: flex; align-items: end; justify-content: space-between; gap: 12px; margin-top: auto; }
-    .points { font-size: 26px; font-weight: 900; letter-spacing: -0.03em; }
-    .points span { display: block; color: var(--muted); font-size: 12px; margin-top: 5px; font-weight: 600; }
 
-    .convert-wrap {
-      max-width: 940px; margin: 0 auto; padding: 18px 0 6px;
+    .notice-card {
+      margin-top: 18px;
+      padding: 20px; border-radius: 22px;
+      background: rgba(47,224,209,0.08); border: 1px solid rgba(47,224,209,0.16);
+      color: #d9fffb;
     }
-    .convert-card {
-      position: relative; padding: 24px; border-radius: 30px;
-      background: radial-gradient(circle at top, rgba(47,224,209,0.08), transparent 28%), linear-gradient(180deg, rgba(30,33,41,0.96), rgba(18,20,26,0.98));
-      border: 1px solid rgba(47,224,209,0.18); box-shadow: var(--shadow);
-    }
-    .convert-header { text-align: center; margin-bottom: 24px; }
-    .icon-bubble {
-      width: 92px; height: 92px; margin: 0 auto 18px; border-radius: 28px; display: grid; place-items: center;
-      background: rgba(47,224,209,0.12); color: var(--brand); font-size: 42px;
-    }
-    .convert-title { font-size: clamp(28px, 4vw, 44px); font-weight: 900; margin: 0; }
-    .convert-desc { color: var(--muted); margin-top: 10px; line-height: 1.8; }
-    .exchange-row {
-      display: grid; grid-template-columns: 1fr 120px 1fr; align-items: center; gap: 16px; margin: 28px 0 18px;
-    }
-    .exchange-box {
-      background: #0b0c10; border: 1px solid rgba(255,255,255,0.06); border-radius: 28px; padding: 22px;
-      min-height: 122px; display: grid; align-content: center; justify-items: center;
-    }
-    .exchange-box.right {
-      background: rgba(47,224,209,0.08); border-color: rgba(47,224,209,0.2);
-    }
-    .exchange-box .k { color: var(--muted); font-size: 13px; }
-    .exchange-box .v { font-size: clamp(30px, 4vw, 48px); font-weight: 900; margin-top: 10px; }
-    .arrow-btn {
-      width: 74px; height: 74px; margin: 0 auto; border-radius: 50%; border: 0; cursor: pointer;
-      background: linear-gradient(135deg, #82fff3, var(--brand)); color: #062523; font-size: 34px; font-weight: 900;
-      box-shadow: 0 10px 25px rgba(47,224,209,0.3);
-    }
-    .slider-wrap { margin: 24px 0 16px; }
-    .slider-top {
-      display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 10px; color: var(--muted); font-size: 13px;
-    }
-    input[type="range"] {
-      width: 100%; appearance: none; height: 8px; border-radius: 999px; background: #040506; outline: none;
-    }
-    input[type="range"]::-webkit-slider-thumb {
-      appearance: none; width: 22px; height: 22px; border-radius: 50%; border: 0; background: var(--brand); box-shadow: 0 0 0 4px rgba(47,224,209,0.18), 0 0 16px rgba(47,224,209,0.45); cursor: pointer;
-    }
-    .slider-minmax {
-      display: flex; align-items: center; justify-content: space-between; margin-top: 10px; color: rgba(255,255,255,0.28); font-size: 12px;
-    }
-    .warning-box {
-      margin-top: 18px; padding: 16px 18px; border-radius: 18px;
-      background: rgba(255,111,145,0.08); border: 1px solid rgba(255,111,145,0.16); color: #ff97b2; line-height: 1.75; font-size: 14px;
-    }
-    .convert-actions { margin-top: 24px; display: grid; gap: 12px; }
-    .big-btn {
-      width: 100%; min-height: 58px; border-radius: 20px; border: 0; cursor: pointer; font-weight: 900; font-size: 18px;
-      background: linear-gradient(135deg, #83fff3, var(--brand)); color: #052523; box-shadow: 0 12px 30px rgba(47,224,209,0.22);
-    }
-    .subtle-center { text-align: center; color: var(--muted); font-size: 13px; }
+    .notice-card strong { display: block; margin-bottom: 8px; font-size: 16px; }
+    .notice-card div { line-height: 1.85; color: #c9efea; }
 
-    .wish-wrap {
-      max-width: 840px; margin: 0 auto; padding: 20px 0 8px;
+    .faq {
+      display: grid; gap: 12px;
     }
-    .wish-card {
-      padding: 28px; border-radius: 30px; background: linear-gradient(180deg, rgba(31,34,42,0.97), rgba(20,22,29,0.98));
-      border: 1px solid rgba(47,224,209,0.16); box-shadow: var(--shadow);
-    }
-    .wish-head { text-align: center; margin-bottom: 24px; }
-    .wish-head .icon-bubble { margin-bottom: 16px; }
-    .wish-title { font-size: clamp(28px, 4vw, 42px); font-weight: 900; margin: 0; }
-    .wish-desc { color: var(--muted); line-height: 1.8; margin-top: 10px; }
-    .form-grid { display: grid; gap: 16px; }
-    .field { display: grid; gap: 8px; }
-    .field label { color: var(--muted); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; font-weight: 700; }
-    .field input, .field textarea, .field select {
-      width: 100%; border-radius: 18px; border: 1px solid rgba(255,255,255,0.08); background: #050607; color: var(--text); outline: 0; padding: 16px;
-    }
-    .field textarea { min-height: 160px; resize: vertical; }
-    .suggestion-box {
-      padding: 16px; border-radius: 18px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); color: var(--muted); line-height: 1.8; font-size: 14px;
-    }
-
-    .records-grid {
-      display: grid; grid-template-columns: 1.04fr .96fr; gap: 16px;
-    }
-    .panel { padding: 20px; }
-    .panel-head {
-      display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 16px;
-    }
-    .panel-title { font-size: 22px; font-weight: 900; }
-    .panel-sub { color: var(--muted); font-size: 13px; margin-top: 4px; }
-    .list { display: grid; gap: 12px; }
-    .row {
-      display: grid; grid-template-columns: auto 1fr auto; gap: 12px; align-items: center;
-      padding: 16px; border-radius: 18px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
-    }
-    .row-icon {
-      width: 44px; height: 44px; border-radius: 14px; display: grid; place-items: center;
-      background: rgba(47,224,209,0.14); color: #9ffff7; font-size: 20px;
-    }
-    .row-title { font-weight: 800; }
-    .row-desc { color: var(--muted); font-size: 13px; margin-top: 4px; line-height: 1.7; }
-    .row-value { text-align: right; font-weight: 900; }
-    .plus { color: #8dfff4; }
-    .minus { color: #ffd78a; }
-    .badge {
-      display: inline-flex; align-items: center; padding: 8px 10px; border-radius: 999px; font-size: 12px; font-weight: 900;
-    }
-    .pending { background: rgba(255,185,94,0.14); color: #ffd291; }
-    .approved { background: rgba(123,227,143,0.14); color: #a6efb4; }
-    .delivered, .active { background: rgba(47,224,209,0.14); color: #96fff4; }
-    .rejected { background: rgba(255,111,145,0.14); color: #ffabc0; }
-
-    .table-wrap {
-      overflow: auto; border-radius: 20px; border: 1px solid rgba(255,255,255,0.06); background: rgba(255,255,255,0.02);
-    }
-    table {
-      width: 100%; border-collapse: collapse; min-width: 720px;
-    }
-    th, td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.06); text-align: left; }
-    th { color: var(--muted); font-size: 12px; letter-spacing: .05em; text-transform: uppercase; }
-    td { font-size: 14px; }
-    tr:last-child td { border-bottom: 0; }
-
-    .admin-grid {
-      display: grid; gap: 18px;
-    }
-    .admin-stats {
-      display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 12px;
-    }
-    .admin-stat {
+    .faq-item {
       padding: 18px; border-radius: 20px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
     }
-    .admin-stat .num { font-size: 30px; font-weight: 900; margin-top: 8px; }
-    .admin-layout {
-      display: grid; grid-template-columns: 280px 1fr; gap: 18px;
-    }
-    .admin-sidebar {
-      padding: 16px; border-radius: 26px; background: linear-gradient(180deg, rgba(24,27,35,0.96), rgba(15,18,24,0.96)); border: 1px solid rgba(255,255,255,0.06);
-      position: sticky; top: 82px; height: fit-content;
-    }
-    .admin-content-card {
-      padding: 20px; border-radius: 28px; background: linear-gradient(180deg, rgba(24,27,35,0.96), rgba(16,18,24,0.98)); border: 1px solid rgba(255,255,255,0.06);
-      box-shadow: var(--shadow);
-    }
-    .admin-nav { display: grid; gap: 8px; margin-top: 12px; }
-    .admin-btn {
-      width: 100%; text-align: left; border: 1px solid transparent; background: transparent; color: var(--text); cursor: pointer;
-      padding: 14px 14px; border-radius: 16px;
-    }
-    .admin-btn.active { background: rgba(47,224,209,0.1); border-color: rgba(47,224,209,0.22); }
-    .admin-btn strong { display: block; font-size: 15px; }
-    .admin-btn span { display: block; color: var(--muted); font-size: 12px; margin-top: 4px; }
+    .faq-item strong { display: block; font-size: 16px; margin-bottom: 8px; }
+    .faq-item span { color: var(--muted); line-height: 1.8; font-size: 14px; }
 
-    .toolbar {
-      display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 16px;
+    @media (max-width: 900px) {
+      .summary-grid, .grid { grid-template-columns: 1fr; }
     }
-    .search {
-      display: flex; align-items: center; gap: 10px; min-width: 260px; flex: 1;
-      background: #12161f; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 0 14px;
-    }
-    .search input {
-      width: 100%; height: 48px; border: 0; outline: 0; background: transparent; color: var(--text);
-    }
-    .toolbar select {
-      min-width: 180px; height: 48px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.08); background: #12161f; color: var(--text); padding: 0 14px;
-    }
-
-    .modal {
-      position: fixed; inset: 0; z-index: 120; display: none; align-items: center; justify-content: center; padding: 18px;
-      background: rgba(7,9,12,0.74); backdrop-filter: blur(10px);
-    }
-    .modal.open { display: flex; }
-    .modal-card {
-      width: min(100%, 560px); border-radius: 28px; overflow: hidden; background: #151922; border: 1px solid rgba(255,255,255,0.08); box-shadow: var(--shadow);
-    }
-    .modal-head { padding: 24px 24px 10px; }
-    .modal-body { padding: 0 24px 24px; display: grid; gap: 16px; }
-
-    .empty {
-      padding: 40px 20px; text-align: center; color: var(--muted); border-radius: 20px; border: 1px dashed rgba(255,255,255,0.12);
-    }
-
-    @media (max-width: 1200px) {
-      .hero-grid, .creator-shell, .records-grid, .admin-layout { grid-template-columns: 1fr; }
-      .mobile-nav, .admin-sidebar { position: static; }
-      .store-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
-      .summary-row, .admin-stats { grid-template-columns: repeat(2, minmax(0,1fr)); }
-    }
-    @media (max-width: 860px) {
-      .wallet-grid, .exchange-row { grid-template-columns: 1fr; }
-      .exchange-row { gap: 12px; }
-      .store-grid { grid-template-columns: 1fr; }
-      .summary-row, .admin-stats { grid-template-columns: 1fr; }
-      .topbar-inner { flex-direction: column; align-items: stretch; }
-      .screen-top, .toolbar, .panel-head { flex-direction: column; align-items: stretch; }
-    }
-    @media (max-width: 560px) {
-      .container { width: min(calc(100% - 20px), var(--max)); }
-      .hero-main, .hero-side, .screen, .panel, .admin-content-card, .wish-card, .convert-card { padding: 16px; }
-      .row { grid-template-columns: auto 1fr; }
-      .row-value { grid-column: 2 / 3; text-align: left; }
-      .reward-footer { flex-direction: column; align-items: stretch; }
-      .btn, .big-btn { width: 100%; }
-      .exchange-box .v { font-size: 34px; }
+    @media (max-width: 640px) {
+      .topbar-inner, .section-head { flex-direction: column; align-items: stretch; }
+      .hero-card, .card { padding: 18px; }
+      .hero-title { font-size: 34px; }
+      .section-title { font-size: 24px; }
     }
   </style>
 </head>
@@ -457,688 +179,202 @@
       <div class="brand">
         <div class="brand-mark">S</div>
         <div>
-          <div class="brand-title">SWAG 積分系統 Demo</div>
-          <div class="brand-sub">用積分兌換妳喜歡的獎勵</div>
+          <div class="brand-title">SWAG 主播積分中心</div>
+          <div class="brand-sub">如何取得積分</div>
         </div>
       </div>
-      <div class="view-switch">
-        <button class="view-btn active" data-view="creator">主播端</button>
-        <button class="view-btn" data-view="admin">管理後台</button>
-      </div>
+      <a class="back-link" href="index.html">← 返回積分中心</a>
     </div>
   </header>
 
-  <section class="container hero creator-only">
-    <div class="hero-grid">
-      <div class="card hero-main">
-        <div class="eyebrow">我的積分錢包</div>
-        <div class="hero-title">直播累積的努力，都能變成妳的專屬積分</div>
-        <div class="hero-desc">
-          妳可以把累積的積分用來兌換站內曝光、體驗活動或精選禮物；若暫時沒有想兌換的內容，也能選擇把部分積分換成鑽石，保留更多彈性。
-        </div>
-        <div class="wallet-grid">
-          <div class="wallet-balance">
-            <div class="label">目前可用積分</div>
-            <div class="balance-value" id="walletBalance">571,000</div>
-            <div class="mini-row">
-              <div class="chip">本月新增：<strong>+31,820</strong></div>
-              <div class="chip">本月使用：<strong>-12,400</strong></div>
-              <div class="chip">取得後 12 個月到期</div>
-            </div>
-          </div>
-          <div class="metrics">
-            <div class="metric-box">
-              <div class="label">即將過期</div>
-              <div class="v">18,500</div>
-              <small>2026/06/30 到期，建議優先使用或轉換</small>
-            </div>
-            <div class="metric-box">
-              <div class="label">本月互動券補償</div>
-              <div class="v">9,400</div>
-              <small>來自付費直播互動券使用情境</small>
-            </div>
-          </div>
-        </div>
+  <section class="container hero">
+    <div class="hero-card">
+      <div class="eyebrow">How to Earn Points</div>
+      <div class="hero-title">如何取得積分</div>
+      <div class="hero-desc">
+        妳在平台上的努力，不只會反映在直播表現，也能累積成專屬積分。無論是參加活動、獲得排名獎勵、完成特殊任務，或是因互動券產生的補償，都有機會轉成可使用的積分。累積後即可用於兌換獎勵、提交許願，或依規則換成鑽石。
       </div>
-      <div class="card hero-side">
-        <div class="side-item">
-          <strong>積分可以怎麼使用？</strong>
-          <span>不再把商城、明細、轉換、許願混在同一頁，而是以 moor 內頁概念做四個子頁面切換。</span>
+
+      <div class="summary-grid">
+        <div class="summary-card">
+          <div class="k">積分有效期限</div>
+          <div class="v">12 個月</div>
+          <small>自取得日起算，請記得在到期前完成使用。</small>
         </div>
-        <div class="side-item">
-          <strong>也可以選擇換成鑽石</strong>
-          <span>讓主播有保底出口，降低被白嫖感，同時用顯示比值提醒去引導優先兌換官方高價值獎勵。</span>
+        <div class="summary-card">
+          <div class="k">發放方式</div>
+          <div class="v">依任務與活動規則</div>
+          <small>不同來源的積分，會依對應活動或任務辦法發放。</small>
         </div>
-        <div class="side-item">
-          <strong>商城沒有想要的？可以直接許願</strong>
-          <span>若商城獎勵不夠吸引，主播可主動提交想兌換的內容，後台統一審核、報價與回覆。</span>
+        <div class="summary-card">
+          <div class="k">使用方式</div>
+          <div class="v">兌換 / 許願 / 轉鑽</div>
+          <small>可用於獎勵商城、夢想許願池，或依規則換成鑽石。</small>
         </div>
       </div>
     </div>
   </section>
 
-  <main class="container section creator-only">
-    <div class="creator-shell">
-      <aside class="mobile-nav">
-        <div class="mobile-header">
-          <div class="avatar"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80" alt="creator avatar"></div>
-          <div>
-            <div class="mobile-name">eleanor_17</div>
-            <div class="mobile-id">@eleanor_17</div>
-          </div>
-        </div>
-        <div class="nav-group" id="creatorNav">
-          <button class="nav-btn active" data-screen="store">
-            <div class="left"><div class="icon">🏬</div><div class="text"><strong>獎勵商城</strong><span>曝光 / 體驗 / 旅遊 / 周邊</span></div></div>
-            <div>›</div>
-          </button>
-          <button class="nav-btn" data-screen="convert">
-            <div class="left"><div class="icon">💎</div><div class="text"><strong>鑽石轉換器</strong><span>積分可換鑽石，但比值較差</span></div></div>
-            <div>›</div>
-          </button>
-          <button class="nav-btn" data-screen="wish">
-            <div class="left"><div class="icon">✨</div><div class="text"><strong>許願池</strong><span>想換清單外獎勵就提交需求</span></div></div>
-            <div>›</div>
-          </button>
-          <button class="nav-btn" data-screen="records">
-            <div class="left"><div class="icon">📒</div><div class="text"><strong>積分明細</strong><span>從原本加扣分明細改版而來</span></div></div>
-            <div>›</div>
-          </button>
-        </div>
-      </aside>
-
-      <section class="app-content">
-        <div class="screen" data-screen-panel="store">
-          <div class="screen-top">
-            <div>
-              <div class="screen-title">獎勵商城</div>
-              <div class="screen-sub">先看看有哪些獎勵可以兌換，從曝光資源到體驗活動，都能用積分帶回去。</div>
-            </div>
-            <div class="top-actions">
-              <button class="btn btn-ghost">查看我的申請</button>
-              <button class="btn btn-primary">立即兌換</button>
-            </div>
-          </div>
-
-          <div class="summary-row">
-            <div class="summary-card"><div class="label">可用積分</div><div class="num">571,000</div><small>可立即兌換</small></div>
-            <div class="summary-card"><div class="label">可轉鑽石</div><div class="num">2,855</div><small>依目前 200:1 比值</small></div>
-            <div class="summary-card"><div class="label">待審核申請</div><div class="num">3</div><small>含旅遊與體驗型獎勵</small></div>
-            <div class="summary-card"><div class="label">即將過期</div><div class="num">18,500</div><small>30 天內到期</small></div>
-          </div>
-
-          <div class="toolbar">
-            <div class="tabs" id="categoryTabs"></div>
-            <div style="display:flex;gap:12px;flex-wrap:wrap;min-width:min(100%,430px);">
-              <div class="search"><span>🔍</span><input id="searchInput" type="text" placeholder="搜尋獎勵，例如：按摩、包包、首頁曝光" /></div>
-              <select id="sortSelect">
-                <option value="recommended">排序：推薦優先</option>
-                <option value="low">排序：積分低到高</option>
-                <option value="high">排序：積分高到低</option>
-                <option value="stock">排序：剩餘數量</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="store-grid" id="storeGrid"></div>
-          <div class="empty hidden" id="emptyStore">找不到符合條件的獎勵。</div>
-        </div>
-
-        <div class="screen hidden" data-screen-panel="convert">
-          <div class="screen-top">
-            <div>
-              <div class="screen-title">鑽石動態轉換器</div>
-              <div class="screen-sub">若妳想保留彈性，可以把部分積分換成鑽石；不過與其他獎勵相比，直接兌換鑽石的整體價值會較低。</div>
-            </div>
-            <div class="top-actions">
-              <button class="btn btn-ghost">查看轉換紀錄</button>
-            </div>
-          </div>
-
-          <div class="convert-wrap">
-            <div class="convert-card">
-              <div class="convert-header">
-                <div class="icon-bubble">🔄</div>
-                <h2 class="convert-title">鑽石動態轉換器</h2>
-                <div class="convert-desc">將您的 Prestige 積分即時轉換為平台鑽石。為了鼓勵優先兌換「實體禮品、曝光資源、體驗型獎勵」，目前換算比值為 <strong>200 PTS = 1 鑽石</strong>。</div>
-              </div>
-
-              <div class="exchange-row">
-                <div class="exchange-box">
-                  <div class="k">使用積分</div>
-                  <div class="v" id="convertPoints">571,000</div>
-                </div>
-                <button class="arrow-btn" id="allInBtn">›</button>
-                <div class="exchange-box right">
-                  <div class="k">獲得鑽石</div>
-                  <div class="v" id="convertDiamond">2,855</div>
-                </div>
-              </div>
-
-              <div class="slider-wrap">
-                <div class="slider-top">
-                  <div>轉換數量調整</div>
-                  <div style="color:var(--brand);font-weight:800;cursor:pointer;" id="allInText">ALL-IN 全部換</div>
-                </div>
-                <input id="convertSlider" type="range" min="0" max="571000" step="1000" value="571000" />
-                <div class="slider-minmax">
-                  <span>0 PTS</span>
-                  <span>MAX: 571,000 PTS</span>
-                </div>
-              </div>
-
-              <div class="warning-box">
-                ※ 提醒：目前的積分兌鑽率為 200 PTS = 1 鑽石。考量到點數價值，建議您優先兌換「實體精品」、「官方曝光」、「旅遊體驗」等高感知獎勵；若您仍希望保底回收價值，也可選擇轉換為鑽石。
-              </div>
-
-              <div class="convert-actions">
-                <button class="big-btn">確認轉換至鑽石帳戶</button>
-                <div class="subtle-center">轉換後將無法回復為積分，請再次確認。</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="screen hidden" data-screen-panel="wish">
-          <div class="screen-top">
-            <div>
-              <div class="screen-title">夢想實現許願池</div>
-              <div class="screen-sub">如果商城裡還沒有妳喜歡的獎勵，歡迎在這裡提交願望，官方會協助評估是否能安排。</div>
-            </div>
-            <div class="top-actions">
-              <button class="btn btn-ghost">我的許願紀錄</button>
-            </div>
-          </div>
-
-          <div class="wish-wrap">
-            <div class="wish-card">
-              <div class="wish-head">
-                <div class="icon-bubble">✦</div>
-                <h2 class="wish-title">夢想實現許願池</h2>
-                <div class="wish-desc">想換的東西不在清單上？只要妳敢想，官方小編就會努力幫妳估價、評估可行性與所需積分。</div>
-              </div>
-
-              <div class="form-grid">
-                <div class="field">
-                  <label>Item Name 獎品名稱</label>
-                  <input type="text" placeholder="例如：某品牌限量包款、演唱會門票、拍攝旅行方案..." />
-                </div>
-                <div class="field">
-                  <label>Category 類型</label>
-                  <select>
-                    <option>精品 / 代購</option>
-                    <option>旅遊 / 體驗</option>
-                    <option>曝光 / 站內資源</option>
-                    <option>活動票券 / 演唱會</option>
-                    <option>其他</option>
-                  </select>
-                </div>
-                <div class="field">
-                  <label>Description 詳細描述</label>
-                  <textarea placeholder="許願原因、參考連結、希望規格、預算感、想在什麼時間點兌換，都可以先寫在這裡。"></textarea>
-                </div>
-                <div class="suggestion-box">
-                  Demo 建議流程：主播送出許願 → 後台標記待估價 → 官方回覆可兌換所需積分 / 是否可執行 → 主播確認後正式建立申請單。這樣就能避免先承諾、後無法履約的風險。
-                </div>
-                <button class="big-btn">送出願望</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="screen hidden" data-screen-panel="records">
-          <div class="screen-top">
-            <div>
-              <div class="screen-title">積分明細</div>
-              <div class="screen-sub">這裡會顯示妳每一筆積分的取得、使用與到期資訊，方便隨時查詢。</div>
-            </div>
-            <div class="top-actions">
-              <button class="btn btn-ghost">下載明細</button>
-            </div>
-          </div>
-
-          <div class="summary-row">
-            <div class="summary-card"><div class="label">本月行為積分</div><div class="num">100</div><small>可保留你原本的行為分概念</small></div>
-            <div class="summary-card"><div class="label">本月獲得積分</div><div class="num">31,820</div><small>互動券 / 活動 / 官方加碼</small></div>
-            <div class="summary-card"><div class="label">本月使用積分</div><div class="num">12,400</div><small>商城與轉鑽合計</small></div>
-            <div class="summary-card"><div class="label">分潤提領比例</div><div class="num">100%</div><small>若未來仍要保留可獨立顯示</small></div>
-          </div>
-
-          <div class="records-grid">
-            <div class="card panel">
-              <div class="panel-head">
-                <div>
-                  <div class="panel-title">積分帳本紀錄</div>
-                  <div class="panel-sub">建議保留「來源」與「到期日」，讓主播知道積分從哪裡來。</div>
-                </div>
-              </div>
-              <div class="list" id="historyList"></div>
-            </div>
-            <div class="card panel">
-              <div class="panel-head">
-                <div>
-                  <div class="panel-title">我的兌換 / 轉換申請</div>
-                  <div class="panel-sub">妳送出的兌換、鑽石轉換與許願申請，都會統一顯示在這裡。</div>
-                </div>
-              </div>
-              <div class="list" id="redeemList"></div>
-            </div>
-          </div>
-
-          <div style="margin-top:18px;" class="table-wrap">
-            <table>
-              <thead>
-                <tr>
-                  <th>日期</th>
-                  <th>類型</th>
-                  <th>原因 / 項目</th>
-                  <th>積分異動</th>
-                  <th>到期日</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr><td>03/22</td><td>互動券補償</td><td>付費直播互動券使用 48 張</td><td class="plus">+480</td><td>2027/03/22</td></tr>
-                <tr><td>03/18</td><td>活動獎勵</td><td>白色情人節活動第 2 名</td><td class="plus">+3,000</td><td>2027/03/18</td></tr>
-                <tr><td>03/15</td><td>官方加碼</td><td>品牌拍攝日參與獎勵</td><td class="plus">+1,000</td><td>2027/03/15</td></tr>
-                <tr><td>03/12</td><td>商城兌換</td><td>Villa Like 按摩券</td><td class="minus">-12,000</td><td>—</td></tr>
-                <tr><td>03/10</td><td>轉換鑽石</td><td>積分轉鑽</td><td class="minus">-40,000</td><td>—</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-    </div>
-  </main>
-
-  <main class="container section admin-only hidden">
-    <div class="admin-grid">
-      <div class="admin-stats">
-        <div class="admin-stat"><div class="label">本月發放積分</div><div class="num">128,450</div><small>含互動券補償與活動獎勵</small></div>
-        <div class="admin-stat"><div class="label">待審核兌換</div><div class="num">17</div><small>商城、轉鑽、許願池合計</small></div>
-        <div class="admin-stat"><div class="label">待估價願望</div><div class="num">9</div><small>需由營運人工評估</small></div>
-        <div class="admin-stat"><div class="label">即將過期積分批次</div><div class="num">9</div><small>30 天內需推播提醒</small></div>
-      </div>
-
-      <div class="admin-layout">
-        <aside class="admin-sidebar">
-          <div class="eyebrow">Admin Console</div>
-          <div style="margin-top:14px;font-size:22px;font-weight:900;">管理後台</div>
-          <div style="margin-top:8px;color:var(--muted);line-height:1.8;font-size:14px;">把主播端完全拆開，後台專注管理發點、商城、轉鑽、許願池與申請審核。</div>
-          <div class="admin-nav" id="adminNav">
-            <button class="admin-btn active" data-admin-panel="requests"><strong>申請審核</strong><span>商城 / 轉鑽 / 許願池</span></button>
-            <button class="admin-btn" data-admin-panel="catalog"><strong>獎勵目錄</strong><span>獎勵上架、積分、庫存</span></button>
-            <button class="admin-btn" data-admin-panel="rules"><strong>發點規則</strong><span>互動券、活動、手動發放</span></button>
-            <button class="admin-btn" data-admin-panel="wishes"><strong>許願池處理</strong><span>估價、回覆、建單</span></button>
-          </div>
-        </aside>
-
-        <section class="admin-content-card">
-          <div class="admin-panel" data-admin-content="requests">
-            <div class="panel-head">
-              <div>
-                <div class="panel-title">申請審核中心</div>
-                <div class="panel-sub">把獎勵兌換、鑽石轉換、許願池申請整合進同一個待辦區。</div>
-              </div>
-              <div class="top-actions">
-                <button class="btn btn-ghost">批次匯出</button>
-                <button class="btn btn-primary">手動發點</button>
-              </div>
-            </div>
-            <div class="table-wrap">
-              <table>
-                <thead>
-                  <tr><th>主播</th><th>類型</th><th>內容</th><th>點數</th><th>狀態</th><th>操作</th></tr>
-                </thead>
-                <tbody>
-                  <tr><td>stellajs</td><td>商城兌換</td><td>首頁 Pop Up 曝光</td><td>8,000</td><td><span class="badge pending">pending</span></td><td>Approve / Reject</td></tr>
-                  <tr><td>missgina</td><td>商城兌換</td><td>Villa Like 按摩券</td><td>12,000</td><td><span class="badge pending">pending</span></td><td>Approve / Reject</td></tr>
-                  <tr><td>eleanor_17</td><td>轉鑽</td><td>積分 571,000 → 鑽石 2,855</td><td>571,000</td><td><span class="badge approved">approved</span></td><td>View</td></tr>
-                  <tr><td>nitavsvs</td><td>許願池</td><td>指定演唱會門票 + 住宿</td><td>待估價</td><td><span class="badge pending">pending</span></td><td>Estimate</td></tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-          <div class="admin-panel hidden" data-admin-content="catalog">
-            <div class="panel-head">
-              <div>
-                <div class="panel-title">獎勵目錄管理</div>
-                <div class="panel-sub">管理積分成本、庫存、分類、是否開放兌鑽替代方案。</div>
-              </div>
-              <button class="btn btn-primary">新增獎勵</button>
-            </div>
-            <div class="table-wrap">
-              <table>
-                <thead>
-                  <tr><th>獎勵</th><th>分類</th><th>積分</th><th>庫存</th><th>狀態</th><th>備註</th></tr>
-                </thead>
-                <tbody>
-                  <tr><td>直播列表前三格</td><td>曝光</td><td>6,000</td><td>6</td><td><span class="badge active">active</span></td><td>低成本高感知</td></tr>
-                  <tr><td>3 萬精品額度</td><td>精品</td><td>30,000</td><td>4</td><td><span class="badge active">active</span></td><td>線上代購 / 線下採買</td></tr>
-                  <tr><td>豪華機加酒</td><td>旅遊</td><td>50,000</td><td>3</td><td><span class="badge active">active</span></td><td>可加購升艙</td></tr>
-                  <tr><td>SWAG 周邊禮盒</td><td>周邊</td><td>2,500</td><td>30</td><td><span class="badge active">active</span></td><td>低門檻兌換區</td></tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-          <div class="admin-panel hidden" data-admin-content="rules">
-            <div class="panel-head">
-              <div>
-                <div class="panel-title">發點規則</div>
-                <div class="panel-sub">未來所有活動與互動券都可匯入同一套積分引擎。</div>
-              </div>
-            </div>
-            <div class="table-wrap">
-              <table>
-                <thead>
-                  <tr><th>source_type</th><th>說明</th><th>規則</th><th>狀態</th></tr>
-                </thead>
-                <tbody>
-                  <tr><td>interaction_coupon</td><td>用戶使用互動券觀看付費直播時補發積分</td><td>每張 10 點</td><td><span class="badge active">active</span></td></tr>
-                  <tr><td>ranking_reward</td><td>活動名次獎勵發點</td><td>依活動設定</td><td><span class="badge active">active</span></td></tr>
-                  <tr><td>offline_event</td><td>線下活動、拍攝、商務合作</td><td>人工發放</td><td><span class="badge active">active</span></td></tr>
-                  <tr><td>manual_adjustment</td><td>營運手動補點 / 扣點</td><td>需紀錄原因</td><td><span class="badge active">active</span></td></tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-          <div class="admin-panel hidden" data-admin-content="wishes">
-            <div class="panel-head">
-              <div>
-                <div class="panel-title">許願池處理</div>
-                <div class="panel-sub">這個模組是避免獎勵吸引力不足的保底設計，後台要能估價與回覆。</div>
-              </div>
-            </div>
-            <div class="table-wrap">
-              <table>
-                <thead>
-                  <tr><th>主播</th><th>願望內容</th><th>分類</th><th>狀態</th><th>預估點數</th><th>備註</th></tr>
-                </thead>
-                <tbody>
-                  <tr><td>nitavsvs</td><td>某場演唱會雙人票 + 住宿</td><td>票券 / 體驗</td><td><span class="badge pending">待估價</span></td><td>28,000</td><td>需確認是否買得到票</td></tr>
-                  <tr><td>stellajs</td><td>指定品牌小廢包</td><td>精品</td><td><span class="badge approved">可執行</span></td><td>42,000</td><td>可由小編代購</td></tr>
-                  <tr><td>eleanor_17</td><td>日本拍攝旅行 + 攝影師同行</td><td>旅遊</td><td><span class="badge pending">待報價</span></td><td>78,000</td><td>需拆分旅遊與加購攝影師</td></tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </section>
+  <section class="container section">
+    <div class="section-head">
+      <div>
+        <div class="section-title">積分來源</div>
+        <div class="section-sub">以下為目前可累積積分的主要方式，實際點數將依各活動或公告規則為準。</div>
       </div>
     </div>
-  </main>
 
-  <div class="modal" id="redeemModal">
-    <div class="modal-card">
-      <div class="modal-head">
-        <div class="eyebrow">Redeem Reward</div>
-        <div id="modalTitle" style="margin-top:14px;font-size:30px;font-weight:900;">兌換獎勵</div>
-      </div>
-      <div class="modal-body">
-        <div id="modalDesc" style="color:var(--muted);line-height:1.8;"></div>
-        <div class="field">
-          <label>本次消耗積分</label>
-          <input id="modalPoints" type="text" disabled />
+    <div class="grid">
+      <article class="card">
+        <div class="card-head">
+          <div class="icon">🎯</div>
+          <div>
+            <div class="card-title">完成活動</div>
+            <div class="card-desc">參加平台指定活動並達成條件後，即可獲得積分。</div>
+          </div>
         </div>
-        <div class="field">
-          <label>備註 / 希望安排</label>
-          <textarea placeholder="例如：希望安排月份、偏好品牌、是否需要加購攝影師、是否想換成其他規格"></textarea>
+        <div class="point-box">
+          <div class="label">取得方式</div>
+          <div class="value">依活動規則發放</div>
+          <div class="hint">例如完成指定直播挑戰、活動任務或檔期目標後，系統或官方將依規則發放對應積分。</div>
         </div>
-        <div class="field">
-          <label>履約方式</label>
-          <select>
-            <option>由官方後續聯繫安排</option>
-            <option>請先確認名額後再通知我</option>
-            <option>若無法兌換請退回點數</option>
-          </select>
+        <div class="chips">
+          <span class="chip">活動期間限定</span>
+          <span class="chip">完成條件後發放</span>
+          <span class="chip">依公告為準</span>
         </div>
-        <div style="display:flex;justify-content:flex-end;gap:10px;flex-wrap:wrap;">
-          <button class="btn btn-ghost" id="closeModal">取消</button>
-          <button class="btn btn-primary">送出兌換申請</button>
+      </article>
+
+      <article class="card">
+        <div class="card-head">
+          <div class="icon">🎟️</div>
+          <div>
+            <div class="card-title">互動券</div>
+            <div class="card-desc">用戶使用互動券觀看付費直播時，平台可提供相對應的積分補償。</div>
+          </div>
         </div>
+        <div class="point-box">
+          <div class="label">取得方式</div>
+          <div class="value">依互動券規則補償</div>
+          <div class="hint">當互動券使用情境符合平台發放規則時，將會補發積分至帳戶，減少直播內容被免費觀看時的落差感。</div>
+        </div>
+        <div class="chips">
+          <span class="chip">依券種規則</span>
+          <span class="chip">可能分批發放</span>
+          <span class="chip">以平台公告為準</span>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-head">
+          <div class="icon">🏆</div>
+          <div>
+            <div class="card-title">排名獎勵</div>
+            <div class="card-desc">在活動排行榜中取得指定名次，也有機會獲得積分獎勵。</div>
+          </div>
+        </div>
+        <div class="point-box">
+          <div class="label">取得方式</div>
+          <div class="value">依名次與活動辦法發放</div>
+          <div class="hint">例如活動結束後，依最終排名發放對應積分，名次越高，通常可獲得更多積分或加碼內容。</div>
+        </div>
+        <div class="chips">
+          <span class="chip">排行榜活動</span>
+          <span class="chip">依名次發放</span>
+          <span class="chip">可搭配其他獎勵</span>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-head">
+          <div class="icon">✨</div>
+          <div>
+            <div class="card-title">官方加碼</div>
+            <div class="card-desc">平台可能依特定表現、合作內容或主題企劃，額外提供積分加碼。</div>
+          </div>
+        </div>
+        <div class="point-box">
+          <div class="label">取得方式</div>
+          <div class="value">依官方通知發放</div>
+          <div class="hint">例如配合平台宣傳、節慶活動、主題企劃或特殊表現時，官方可能提供額外積分回饋。</div>
+        </div>
+        <div class="chips">
+          <span class="chip">不定期加碼</span>
+          <span class="chip">依官方通知</span>
+          <span class="chip">可能與活動併行</span>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-head">
+          <div class="icon">🧩</div>
+          <div>
+            <div class="card-title">特殊任務</div>
+            <div class="card-desc">完成平台指定的特殊任務，也可能獲得額外積分。</div>
+          </div>
+        </div>
+        <div class="point-box">
+          <div class="label">取得方式</div>
+          <div class="value">依任務條件發放</div>
+          <div class="hint">例如完成指定直播時段、特定內容任務、任務挑戰或配合任務型活動後，將依條件發放積分。</div>
+        </div>
+        <div class="chips">
+          <span class="chip">任務制</span>
+          <span class="chip">有條件限制</span>
+          <span class="chip">完成後發放</span>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-head">
+          <div class="icon">📍</div>
+          <div>
+            <div class="card-title">線下活動</div>
+            <div class="card-desc">參與平台安排的線下活動、拍攝或合作企劃，也可能獲得積分回饋。</div>
+          </div>
+        </div>
+        <div class="point-box">
+          <div class="label">取得方式</div>
+          <div class="value">依活動安排發放</div>
+          <div class="hint">例如出席線下活動、參與官方拍攝、品牌合作或指定企劃時，平台可依實際安排提供積分。</div>
+        </div>
+        <div class="chips">
+          <span class="chip">線下參與</span>
+          <span class="chip">官方安排</span>
+          <span class="chip">依通知發放</span>
+        </div>
+      </article>
+    </div>
+
+    <div class="notice-card">
+      <strong>提醒</strong>
+      <div>
+        不同來源的積分，發放時間與點數可能不同；實際取得方式、發放條件與是否列入活動計算，將依各活動辦法、平台公告與官方通知為準。
       </div>
     </div>
-  </div>
+  </section>
 
-  <script>
-    const rewardData = [
-      { id: 1, name: '直播列表前三格', category: '曝光', desc: '指定檔期於直播列表首頁優先曝光，適合作為新主題檔期加熱。', points: 6000, stock: 6, tag: '低成本高感知', recommended: 98, icon: '✨', meta: ['需排期', '官方審核', '曝光型'] },
-      { id: 2, name: '首頁 Pop Up 大張圖', category: '曝光', desc: '首頁大型彈窗曝光一次，適合重大活動或主題造勢。', points: 8000, stock: 3, tag: '高曝光', recommended: 95, icon: '📣', meta: ['需素材', '排期型', '高觸達'] },
-      { id: 3, name: 'Cover Girl', category: '曝光', desc: '獲得 Cover Girl 版位，提升站內辨識度與形象感。', points: 12000, stock: 2, tag: '形象資產', recommended: 90, icon: '👑', meta: ['限定名額', '高稀缺', '站內版位'] },
-      { id: 4, name: 'Villa Like 按摩券', category: '體驗', desc: '兌換高級按摩療程，由官方安排配合店家與可預約時段。', points: 12000, stock: 8, tag: '熱門體驗', recommended: 92, icon: '💆‍♀️', meta: ['需預約', '實體票券', '體驗型'] },
-      { id: 5, name: '高級做臉保養', category: '體驗', desc: '提供指定品牌或合作店家保養方案，由官方協助預約。', points: 18000, stock: 6, tag: '保養升級', recommended: 86, icon: '🧴', meta: ['需預約', '體驗型', '官方安排'] },
-      { id: 6, name: '3 萬精品額度', category: '精品', desc: '提供 3 萬元內精品購物額度，可線上代購或安排線下採買。', points: 30000, stock: 4, tag: '精品入門', recommended: 89, icon: '👜', meta: ['額度型', '可代購', '線下可用'] },
-      { id: 7, name: '10 萬精品額度', category: '精品', desc: '提供 10 萬元內精品購物額度，適合高階主播目標型兌換。', points: 90000, stock: 2, tag: '高價值', recommended: 80, icon: '💎', meta: ['額度型', '高單價', '需審核'] },
-      { id: 8, name: '信義區百貨任你挑', category: '精品', desc: '百貨指定區域線下採買，上限 10 萬，僅限官方安排的實體流程。', points: 100000, stock: 1, tag: '線下限定', recommended: 76, icon: '🛍️', meta: ['僅線下', '高稀缺', '需預約'] },
-      { id: 9, name: '豪華機加酒', category: '旅遊', desc: '亞洲旅遊方案，含經濟艙與 4 星以上飯店，由旅行社安排。', points: 50000, stock: 3, tag: '旅遊入門', recommended: 88, icon: '✈️', meta: ['旅行社對接', '經濟艙', '4 星以上'] },
-      { id: 10, name: '高級機加酒', category: '旅遊', desc: '更高預算旅遊方案，可作為拍攝型旅行或高感度獎勵。', points: 60000, stock: 2, tag: '熱門高單價', recommended: 85, icon: '🏝️', meta: ['4 星以上', '可加購升級', '熱門'] },
-      { id: 11, name: '奢華機加酒', category: '旅遊', desc: '含 5 星以上住宿的高級旅遊方案，可另外加購升艙與攝影師。', points: 90000, stock: 2, tag: '旗艦旅遊', recommended: 78, icon: '🥂', meta: ['5 星以上', '可加購', '高價值'] },
-      { id: 12, name: 'SWAG 周邊禮盒', category: 'SWAG 周邊', desc: '帽 T、毛巾、鍵帽或節慶禮盒等官方周邊，適合低門檻兌換。', points: 2500, stock: 30, tag: '低門檻', recommended: 96, icon: '🎁', meta: ['常駐型', '低門檻', '新手友善'] },
-      { id: 13, name: '攝影棚拍寫真', category: '體驗', desc: '安排攝影棚棚拍寫真，含造型與拍攝時段協調，可作為形象升級獎勵。', points: 25000, stock: 4, tag: '品牌升級', recommended: 91, icon: '📸', meta: ['需預約', '形象型', '熱門'] },
-      { id: 14, name: '大戶推薦通知', category: '曝光', desc: '針對高價值用戶區塊進行推薦曝光，提高精準觸達感。', points: 10000, stock: 5, tag: '精準曝光', recommended: 84, icon: '💌', meta: ['精準推送', '需檔期', '曝光型'] }
-    ];
+  <section class="container section">
+    <div class="section-head">
+      <div>
+        <div class="section-title">常見問題</div>
+        <div class="section-sub">主播最常會想確認的幾件事。</div>
+      </div>
+    </div>
 
-    const historyData = [
-      { icon: '🎟️', title: '互動券補償積分', desc: '2026/03/22｜付費直播互動券使用 48 張｜到期日 2027/03/22', value: '+480', type: 'plus' },
-      { icon: '🏆', title: '活動排名獎勵', desc: '2026/03/18｜白色情人節活動第 2 名｜到期日 2027/03/18', value: '+3000', type: 'plus' },
-      { icon: '📍', title: '官方活動加碼', desc: '2026/03/15｜品牌拍攝日參與獎勵｜到期日 2027/03/15', value: '+1000', type: 'plus' },
-      { icon: '💆‍♀️', title: '兌換 Villa Like 按摩券', desc: '2026/03/12｜等待小編聯繫排程', value: '-12000', type: 'minus' },
-      { icon: '💎', title: '積分轉鑽石', desc: '2026/03/10｜40,000 點轉為 200 鑽石', value: '-40000', type: 'minus' }
-    ];
-
-    const redemptionData = [
-      { icon: '💆‍♀️', title: 'Villa Like 按摩券', desc: '希望安排 4 月平日下午，已填寫偏好分店', status: 'pending' },
-      { icon: '📣', title: '首頁 Pop Up 大張圖', desc: '素材已上傳，等待官方排期確認', status: 'approved' },
-      { icon: '💎', title: '積分轉換鑽石', desc: '571,000 點 → 2,855 鑽石', status: 'delivered' },
-      { icon: '✨', title: '夢想實現許願池', desc: '提交：日本拍攝旅行 + 攝影師同行', status: 'pending' }
-    ];
-
-    const categoryOrder = ['全部', '曝光', '體驗', '精品', '旅遊', 'SWAG 周邊'];
-    let currentCategory = '全部';
-    let currentSort = 'recommended';
-    let currentKeyword = '';
-
-    const categoryTabs = document.getElementById('categoryTabs');
-    const storeGrid = document.getElementById('storeGrid');
-    const emptyStore = document.getElementById('emptyStore');
-    const searchInput = document.getElementById('searchInput');
-    const sortSelect = document.getElementById('sortSelect');
-    const historyList = document.getElementById('historyList');
-    const redeemList = document.getElementById('redeemList');
-    const modal = document.getElementById('redeemModal');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalDesc = document.getElementById('modalDesc');
-    const modalPoints = document.getElementById('modalPoints');
-    const convertSlider = document.getElementById('convertSlider');
-    const convertPoints = document.getElementById('convertPoints');
-    const convertDiamond = document.getElementById('convertDiamond');
-
-    function formatNumber(num) {
-      return Number(num).toLocaleString('zh-TW');
-    }
-
-    function renderCategoryTabs() {
-      categoryTabs.innerHTML = categoryOrder.map(cat => `
-        <button class="tab ${cat === currentCategory ? 'active' : ''}" data-category="${cat}">${cat}</button>
-      `).join('');
-    }
-
-    function getFilteredRewards() {
-      let items = [...rewardData];
-      if (currentCategory !== '全部') items = items.filter(item => item.category === currentCategory);
-      if (currentKeyword.trim()) {
-        const keyword = currentKeyword.trim().toLowerCase();
-        items = items.filter(item =>
-          item.name.toLowerCase().includes(keyword) ||
-          item.desc.toLowerCase().includes(keyword) ||
-          item.category.toLowerCase().includes(keyword) ||
-          item.meta.join(' ').toLowerCase().includes(keyword)
-        );
-      }
-      if (currentSort === 'low') items.sort((a, b) => a.points - b.points);
-      if (currentSort === 'high') items.sort((a, b) => b.points - a.points);
-      if (currentSort === 'stock') items.sort((a, b) => b.stock - a.stock);
-      if (currentSort === 'recommended') items.sort((a, b) => b.recommended - a.recommended);
-      return items;
-    }
-
-    function renderStore() {
-      const items = getFilteredRewards();
-      emptyStore.classList.toggle('hidden', items.length !== 0);
-      storeGrid.innerHTML = items.map(item => `
-        <article class="reward-card">
-          <div class="reward-cover">
-            <span class="reward-category">${item.category}</span>
-            <span class="reward-tag">${item.tag}</span>
-            <div class="reward-icon">${item.icon}</div>
-          </div>
-          <div class="reward-body">
-            <div>
-              <div class="reward-name">${item.name}</div>
-              <div class="reward-desc">${item.desc}</div>
-            </div>
-            <div class="meta-row">
-              ${item.meta.map(meta => `<span class="pill">${meta}</span>`).join('')}
-              <span class="pill">剩餘 ${item.stock} 名額</span>
-            </div>
-            <div class="reward-footer">
-              <div class="points">${formatNumber(item.points)}<span>points</span></div>
-              <button class="btn btn-primary" data-redeem-id="${item.id}">立即兌換</button>
-            </div>
-          </div>
-        </article>
-      `).join('');
-    }
-
-    function renderHistory() {
-      historyList.innerHTML = historyData.map(item => `
-        <div class="row">
-          <div class="row-icon">${item.icon}</div>
-          <div>
-            <div class="row-title">${item.title}</div>
-            <div class="row-desc">${item.desc}</div>
-          </div>
-          <div class="row-value ${item.type === 'plus' ? 'plus' : 'minus'}">${item.value}</div>
-        </div>
-      `).join('');
-    }
-
-    function renderRedemptions() {
-      redeemList.innerHTML = redemptionData.map(item => `
-        <div class="row">
-          <div class="row-icon">${item.icon}</div>
-          <div>
-            <div class="row-title">${item.title}</div>
-            <div class="row-desc">${item.desc}</div>
-          </div>
-          <div><span class="badge ${item.status}">${item.status}</span></div>
-        </div>
-      `).join('');
-    }
-
-    function openRedeemModal(id) {
-      const item = rewardData.find(r => r.id === Number(id));
-      if (!item) return;
-      modalTitle.textContent = item.name;
-      modalDesc.textContent = item.desc;
-      modalPoints.value = `${formatNumber(item.points)} points`;
-      modal.classList.add('open');
-    }
-
-    function closeModal() {
-      modal.classList.remove('open');
-    }
-
-    function setCreatorScreen(target) {
-      document.querySelectorAll('#creatorNav .nav-btn').forEach(btn => btn.classList.toggle('active', btn.dataset.screen === target));
-      document.querySelectorAll('[data-screen-panel]').forEach(panel => panel.classList.toggle('hidden', panel.dataset.screenPanel !== target));
-    }
-
-    function setAdminPanel(target) {
-      document.querySelectorAll('#adminNav .admin-btn').forEach(btn => btn.classList.toggle('active', btn.dataset.adminPanel === target));
-      document.querySelectorAll('[data-admin-content]').forEach(panel => panel.classList.toggle('hidden', panel.dataset.adminContent !== target));
-    }
-
-    function updateConvertValues(value) {
-      const pointVal = Math.floor(Number(value) / 1000) * 1000;
-      const diamondVal = Math.floor(pointVal / 200);
-      convertPoints.textContent = formatNumber(pointVal);
-      convertDiamond.textContent = formatNumber(diamondVal);
-    }
-
-    function bindEvents() {
-      document.querySelectorAll('.view-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-          document.querySelectorAll('.view-btn').forEach(x => x.classList.toggle('active', x === btn));
-          const view = btn.dataset.view;
-          document.querySelectorAll('.creator-only').forEach(el => el.classList.toggle('hidden', view !== 'creator'));
-          document.querySelectorAll('.admin-only').forEach(el => el.classList.toggle('hidden', view !== 'admin'));
-        });
-      });
-
-      categoryTabs.addEventListener('click', e => {
-        const btn = e.target.closest('[data-category]');
-        if (!btn) return;
-        currentCategory = btn.dataset.category;
-        renderCategoryTabs();
-        renderStore();
-      });
-
-      searchInput.addEventListener('input', e => {
-        currentKeyword = e.target.value;
-        renderStore();
-      });
-
-      sortSelect.addEventListener('change', e => {
-        currentSort = e.target.value;
-        renderStore();
-      });
-
-      storeGrid.addEventListener('click', e => {
-        const btn = e.target.closest('[data-redeem-id]');
-        if (!btn) return;
-        openRedeemModal(btn.dataset.redeemId);
-      });
-
-      document.getElementById('closeModal').addEventListener('click', closeModal);
-      modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
-
-      document.getElementById('creatorNav').addEventListener('click', e => {
-        const btn = e.target.closest('[data-screen]');
-        if (!btn) return;
-        setCreatorScreen(btn.dataset.screen);
-      });
-
-      document.getElementById('adminNav').addEventListener('click', e => {
-        const btn = e.target.closest('[data-admin-panel]');
-        if (!btn) return;
-        setAdminPanel(btn.dataset.adminPanel);
-      });
-
-      convertSlider.addEventListener('input', e => updateConvertValues(e.target.value));
-      document.getElementById('allInBtn').addEventListener('click', () => {
-        convertSlider.value = convertSlider.max;
-        updateConvertValues(convertSlider.value);
-      });
-      document.getElementById('allInText').addEventListener('click', () => {
-        convertSlider.value = convertSlider.max;
-        updateConvertValues(convertSlider.value);
-      });
-    }
-
-    function init() {
-      renderCategoryTabs();
-      renderStore();
-      renderHistory();
-      renderRedemptions();
-      updateConvertValues(convertSlider.value);
-      bindEvents();
-      setCreatorScreen('store');
-      setAdminPanel('requests');
-    }
-
-    init();
-  </script>
+    <div class="faq">
+      <div class="faq-item">
+        <strong>積分會自己消失嗎？</strong>
+        <span>積分自取得日起算 12 個月內有效，到期後若未使用，將依平台規則失效。建議定期查看積分明細與即將到期提醒。</span>
+      </div>
+      <div class="faq-item">
+        <strong>所有活動都一定會發積分嗎？</strong>
+        <span>不一定。是否發放積分、發放多少，以及是否可與其他獎勵併行，仍以每次活動公告與平台說明為準。</span>
+      </div>
+      <div class="faq-item">
+        <strong>積分可以直接換現金嗎？</strong>
+        <span>目前積分可用於兌換獎勵、提交許願，或依規則換成鑽石；是否可直接等值換現金，將依平台後續規則與公告為準。</span>
+      </div>
+    </div>
+  </section>
 </body>
 </html>

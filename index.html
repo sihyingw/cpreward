@@ -312,57 +312,56 @@
     .slider-top {
       display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 10px; color: var(--muted); font-size: 13px;
     }
+
     input[type="range"] {
-  width: 100%;
-  appearance: none;
-  height: 10px;
-  border-radius: 999px;
-  background: linear-gradient(90deg, rgba(47,224,209,0.28) 0%, rgba(126,248,238,0.95) 100%);
-  outline: none;
-  box-shadow:
-    0 0 0 1px rgba(47,224,209,0.22),
-    0 0 18px rgba(47,224,209,0.18),
-    inset 0 0 14px rgba(126,248,238,0.22);
+      width: 100%;
+      appearance: none;
+      height: 10px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(47,224,209,0.28) 0%, rgba(126,248,238,0.95) 100%);
+      outline: none;
+      box-shadow:
+        0 0 0 1px rgba(47,224,209,0.22),
+        0 0 18px rgba(47,224,209,0.18),
+        inset 0 0 14px rgba(126,248,238,0.22);
     }
-
     input[type="range"]::-webkit-slider-thumb {
-  appearance: none;
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  border: 2px solid rgba(255,255,255,0.7);
-  background: radial-gradient(circle at 30% 30%, #dffffb 0%, #7ef8ee 35%, var(--brand) 72%, #0ea79c 100%);
-  box-shadow:
-    0 0 0 5px rgba(47,224,209,0.18),
-    0 0 24px rgba(47,224,209,0.65),
-    0 0 42px rgba(126,248,238,0.38);
-  cursor: pointer;
+      appearance: none;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      border: 2px solid rgba(255,255,255,0.7);
+      background: radial-gradient(circle at 30% 30%, #dffffb 0%, #7ef8ee 35%, var(--brand) 72%, #0ea79c 100%);
+      box-shadow:
+        0 0 0 5px rgba(47,224,209,0.18),
+        0 0 24px rgba(47,224,209,0.65),
+        0 0 42px rgba(126,248,238,0.38);
+      cursor: pointer;
+    }
+    input[type="range"]::-moz-range-track {
+      height: 10px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(47,224,209,0.28) 0%, rgba(126,248,238,0.95) 100%);
+      box-shadow:
+        0 0 0 1px rgba(47,224,209,0.22),
+        0 0 18px rgba(47,224,209,0.18),
+        inset 0 0 14px rgba(126,248,238,0.22);
+    }
+    input[type="range"]::-moz-range-thumb {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      border: 2px solid rgba(255,255,255,0.7);
+      background: radial-gradient(circle at 30% 30%, #dffffb 0%, #7ef8ee 35%, var(--brand) 72%, #0ea79c 100%);
+      box-shadow:
+        0 0 0 5px rgba(47,224,209,0.18),
+        0 0 24px rgba(47,224,209,0.65),
+        0 0 42px rgba(126,248,238,0.38);
+      cursor: pointer;
     }
 
-    input[type="range"]::-moz-range-track {
-  height: 10px;
-  border-radius: 999px;
-  background: linear-gradient(90deg, rgba(47,224,209,0.28) 0%, rgba(126,248,238,0.95) 100%);
-  box-shadow:
-    0 0 0 1px rgba(47,224,209,0.22),
-    0 0 18px rgba(47,224,209,0.18),
-    inset 0 0 14px rgba(126,248,238,0.22);
-}
-
-    input[type="range"]::-moz-range-thumb {
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  border: 2px solid rgba(255,255,255,0.7);
-  background: radial-gradient(circle at 30% 30%, #dffffb 0%, #7ef8ee 35%, var(--brand) 72%, #0ea79c 100%);
-  box-shadow:
-    0 0 0 5px rgba(47,224,209,0.18),
-    0 0 24px rgba(47,224,209,0.65),
-    0 0 42px rgba(126,248,238,0.38);
-  cursor: pointer;
-}
     .slider-minmax {
-      display: flex; align-items: center; justify-content: space-between; margin-top: 10px; color: rgba(255,255,255,0.28); font-size: 12px;
+      display: flex; align-items: center; justify-content: space-between; margin-top: 10px; color: rgba(255,255,255,0.38); font-size: 12px;
     }
     .warning-box {
       margin-top: 18px; padding: 16px 18px; border-radius: 18px;
@@ -432,7 +431,7 @@
       overflow: auto; border-radius: 20px; border: 1px solid rgba(255,255,255,0.06); background: rgba(255,255,255,0.02);
     }
     table {
-      width: 100%; border-collapse: collapse; min-width: 720px;
+      width: 100%; border-collapse: collapse; min-width: 760px;
     }
     th, td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.06); text-align: left; }
     th { color: var(--muted); font-size: 12px; letter-spacing: .05em; text-transform: uppercase; }
@@ -471,6 +470,12 @@
 
     .toolbar {
       display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 16px;
+    }
+    .toolbar-right {
+      display: flex; align-items: center; gap: 12px; flex-wrap: wrap; width: min(100%, 720px);
+    }
+    .toolbar-actions {
+      display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
     }
     .search {
       display: flex; align-items: center; gap: 10px; min-width: 260px; flex: 1;
@@ -652,7 +657,7 @@
 
           <div class="toolbar">
             <div class="tabs" id="categoryTabs"></div>
-            <div style="display:flex;gap:12px;flex-wrap:wrap;min-width:min(100%,430px);">
+            <div class="toolbar-right">
               <div class="search"><span>🔍</span><input id="searchInput" type="text" placeholder="搜尋獎勵，例如：按摩、包包、首頁曝光" /></div>
               <select id="sortSelect">
                 <option value="recommended">排序：推薦優先</option>
@@ -867,16 +872,85 @@
                 <button class="btn btn-primary">手動發點</button>
               </div>
             </div>
+
+            <div class="toolbar">
+              <div class="toolbar-right">
+                <div class="search">
+                  <span>🔍</span>
+                  <input type="text" placeholder="搜尋主播名稱或 ID，例如：stellajs、eleanor_17" />
+                </div>
+
+                <select>
+                  <option>篩選類型：全部</option>
+                  <option>商城兌換</option>
+                  <option>轉鑽</option>
+                  <option>許願池</option>
+                </select>
+
+                <select>
+                  <option>篩選狀態：全部</option>
+                  <option>pending</option>
+                  <option>approved</option>
+                  <option>rejected</option>
+                </select>
+              </div>
+
+              <div class="toolbar-actions">
+                <button class="btn btn-ghost">清除篩選</button>
+                <button class="btn btn-primary">批次 Approve</button>
+              </div>
+            </div>
+
             <div class="table-wrap">
               <table>
                 <thead>
-                  <tr><th>主播</th><th>類型</th><th>內容</th><th>點數</th><th>狀態</th><th>操作</th></tr>
+                  <tr>
+                    <th><input type="checkbox" /></th>
+                    <th>主播</th>
+                    <th>類型</th>
+                    <th>內容</th>
+                    <th>點數</th>
+                    <th>狀態</th>
+                    <th>操作</th>
+                  </tr>
                 </thead>
                 <tbody>
-                  <tr><td>stellajs</td><td>商城兌換</td><td>首頁 Pop Up 曝光</td><td>8,000</td><td><span class="badge pending">pending</span></td><td>Approve / Reject</td></tr>
-                  <tr><td>missgina</td><td>商城兌換</td><td>Villa Like 按摩券</td><td>12,000</td><td><span class="badge pending">pending</span></td><td>Approve / Reject</td></tr>
-                  <tr><td>eleanor_17</td><td>轉鑽</td><td>積分 571,000 → 鑽石 2,855</td><td>571,000</td><td><span class="badge approved">approved</span></td><td>View</td></tr>
-                  <tr><td>nitavsvs</td><td>許願池</td><td>指定演唱會門票 + 住宿</td><td>待估價</td><td><span class="badge pending">pending</span></td><td>Estimate</td></tr>
+                  <tr>
+                    <td><input type="checkbox" /></td>
+                    <td>stellajs</td>
+                    <td>商城兌換</td>
+                    <td>首頁 Pop Up 曝光</td>
+                    <td>8,000</td>
+                    <td><span class="badge pending">pending</span></td>
+                    <td>Approve / Reject</td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox" /></td>
+                    <td>missgina</td>
+                    <td>商城兌換</td>
+                    <td>Villa Like 按摩券</td>
+                    <td>12,000</td>
+                    <td><span class="badge pending">pending</span></td>
+                    <td>Approve / Reject</td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox" /></td>
+                    <td>eleanor_17</td>
+                    <td>轉鑽</td>
+                    <td>積分 571,000 → 鑽石 2,855</td>
+                    <td>571,000</td>
+                    <td><span class="badge approved">approved</span></td>
+                    <td>View</td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox" /></td>
+                    <td>nitavsvs</td>
+                    <td>許願池</td>
+                    <td>指定演唱會門票 + 住宿</td>
+                    <td>待估價</td>
+                    <td><span class="badge pending">pending</span></td>
+                    <td>Estimate</td>
+                  </tr>
                 </tbody>
               </table>
             </div>

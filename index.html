@@ -90,7 +90,13 @@
       padding: 28px; position: relative; overflow: hidden;
     }
     .hero-main::after {
-      content: ""; position: absolute; right: -70px; top: -80px; width: 260px; height: 260px; border-radius: 50%;
+      content: "";
+      position: absolute;
+      right: -70px;
+      top: -80px;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
       background: radial-gradient(circle, rgba(47,224,209,0.18), transparent 70%);
       pointer-events: none;
     }
@@ -99,8 +105,17 @@
       background: rgba(47,224,209,0.12); border: 1px solid rgba(47,224,209,0.24);
       color: #92fff4; font-size: 12px; font-weight: 800; letter-spacing: .05em; text-transform: uppercase;
     }
-    .hero-title { margin: 16px 0 10px; font-size: clamp(28px, 4vw, 42px); line-height: 1.08; }
-    .hero-desc { color: var(--muted); line-height: 1.9; font-size: 15px; max-width: 760px; }
+    .hero-title {
+      margin: 16px 0 10px;
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1.08;
+    }
+    .hero-desc {
+      color: var(--muted);
+      line-height: 1.9;
+      font-size: 15px;
+      max-width: 760px;
+    }
 
     .wallet-grid {
       display: grid; grid-template-columns: 1.05fr .95fr; gap: 16px; margin-top: 22px;
@@ -109,7 +124,12 @@
       padding: 20px; border-radius: 22px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
     }
     .label { color: var(--muted); font-size: 13px; }
-    .balance-value { font-size: clamp(36px, 5vw, 56px); font-weight: 900; letter-spacing: -0.03em; margin-top: 8px; }
+    .balance-value {
+      font-size: clamp(36px, 5vw, 56px);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      margin-top: 8px;
+    }
     .mini-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
     .chip {
       display: inline-flex; align-items: center; gap: 8px; padding: 10px 12px; border-radius: 999px;
@@ -154,22 +174,31 @@
     .mobile-id { font-size: 12px; color: var(--muted); margin-top: 2px; }
 
     .nav-group { display: grid; gap: 8px; }
+    .nav-link,
     .nav-btn {
       display: flex; align-items: center; justify-content: space-between; gap: 12px;
       width: 100%; border: 1px solid transparent; background: transparent; color: var(--text); cursor: pointer;
       padding: 14px 14px; border-radius: 16px; text-align: left;
     }
+    .nav-link .left,
     .nav-btn .left { display: flex; align-items: center; gap: 12px; }
+    .nav-link .icon,
     .nav-btn .icon {
       width: 36px; height: 36px; border-radius: 12px; display: grid; place-items: center;
       background: rgba(255,255,255,0.04); color: var(--muted);
     }
+    .nav-link .text strong,
     .nav-btn .text strong { display: block; font-size: 15px; }
+    .nav-link .text span,
     .nav-btn .text span { display: block; color: var(--muted); font-size: 12px; margin-top: 2px; }
     .nav-btn.active {
       background: rgba(47,224,209,0.1); border-color: rgba(47,224,209,0.25); box-shadow: var(--glow);
     }
     .nav-btn.active .icon { background: rgba(47,224,209,0.18); color: #9efff6; }
+    .nav-link:hover {
+      background: rgba(255,255,255,0.03);
+      border-color: rgba(255,255,255,0.08);
+    }
 
     .app-content { display: grid; gap: 18px; }
     .screen {
@@ -457,7 +486,7 @@
       <div class="brand">
         <div class="brand-mark">S</div>
         <div>
-          <div class="brand-title">SWAG 積分系統 Demo</div>
+          <div class="brand-title">SWAG 主播積分中心</div>
           <div class="brand-sub">用積分兌換妳喜歡的獎勵</div>
         </div>
       </div>
@@ -488,9 +517,9 @@
           </div>
           <div class="metrics">
             <div class="metric-box">
-              <div class="label">即將過期</div>
+              <div class="label">即將到期</div>
               <div class="v">18,500</div>
-              <small>2026/06/30 到期，建議優先使用或轉換</small>
+              <small>2026/06/30 到期，建議優先使用</small>
             </div>
             <div class="metric-box">
               <div class="label">本月互動券補償</div>
@@ -503,15 +532,15 @@
       <div class="card hero-side">
         <div class="side-item">
           <strong>積分可以怎麼使用？</strong>
-          <span>不再把商城、明細、轉換、許願混在同一頁，而是以 moor 內頁概念做四個子頁面切換。</span>
+          <span>妳可以先逛獎勵商城，查看目前可兌換的內容，也能隨時回到積分明細確認取得與使用紀錄。</span>
         </div>
         <div class="side-item">
           <strong>也可以選擇換成鑽石</strong>
-          <span>讓主播有保底出口，降低被白嫖感，同時用顯示比值提醒去引導優先兌換官方高價值獎勵。</span>
+          <span>如果妳暫時沒有想兌換的獎勵，也能把部分積分換成鑽石；不過和其他獎勵相比，直接兌換鑽石的整體價值會較低。</span>
         </div>
         <div class="side-item">
           <strong>商城沒有想要的？可以直接許願</strong>
-          <span>若商城獎勵不夠吸引，主播可主動提交想兌換的內容，後台統一審核、報價與回覆。</span>
+          <span>如果目前商城沒有妳喜歡的選項，歡迎到夢想許願池提交想要的獎勵，官方會依需求與可執行性進行評估。</span>
         </div>
       </div>
     </div>
@@ -528,20 +557,31 @@
           </div>
         </div>
         <div class="nav-group" id="creatorNav">
+          <a class="nav-link" href="earn.html">
+            <div class="left">
+              <div class="icon">⭐</div>
+              <div class="text">
+                <strong>如何取得積分</strong>
+                <span>查看積分來源與取得方式</span>
+              </div>
+            </div>
+            <div>›</div>
+          </a>
+
           <button class="nav-btn active" data-screen="store">
-            <div class="left"><div class="icon">🏬</div><div class="text"><strong>獎勵商城</strong><span>曝光 / 體驗 / 旅遊 / 周邊</span></div></div>
+            <div class="left"><div class="icon">🏬</div><div class="text"><strong>獎勵商城</strong><span>曝光、體驗、旅遊、周邊</span></div></div>
             <div>›</div>
           </button>
           <button class="nav-btn" data-screen="convert">
-            <div class="left"><div class="icon">💎</div><div class="text"><strong>鑽石轉換器</strong><span>積分可換鑽石，但比值較差</span></div></div>
+            <div class="left"><div class="icon">💎</div><div class="text"><strong>積分換鑽石</strong><span>可直接兌換鑽石</span></div></div>
             <div>›</div>
           </button>
           <button class="nav-btn" data-screen="wish">
-            <div class="left"><div class="icon">✨</div><div class="text"><strong>許願池</strong><span>想換清單外獎勵就提交需求</span></div></div>
+            <div class="left"><div class="icon">✨</div><div class="text"><strong>夢想許願池</strong><span>想要的獎勵不在清單也能提案</span></div></div>
             <div>›</div>
           </button>
           <button class="nav-btn" data-screen="records">
-            <div class="left"><div class="icon">📒</div><div class="text"><strong>積分明細</strong><span>從原本加扣分明細改版而來</span></div></div>
+            <div class="left"><div class="icon">📒</div><div class="text"><strong>積分明細</strong><span>查看每筆取得與使用紀錄</span></div></div>
             <div>›</div>
           </button>
         </div>
@@ -552,19 +592,19 @@
           <div class="screen-top">
             <div>
               <div class="screen-title">獎勵商城</div>
-              <div class="screen-sub">先看看有哪些獎勵可以兌換，從曝光資源到體驗活動，都能用積分帶回去。</div>
+              <div class="screen-sub">先看看有哪些獎勵可以兌換，從站內曝光到體驗活動，都能用積分帶回去。</div>
             </div>
             <div class="top-actions">
-              <button class="btn btn-ghost">查看我的申請</button>
-              <button class="btn btn-primary">立即兌換</button>
+              <button class="btn btn-ghost">我的申請紀錄</button>
+              <button class="btn btn-primary">開始兌換</button>
             </div>
           </div>
 
           <div class="summary-row">
-            <div class="summary-card"><div class="label">可用積分</div><div class="num">571,000</div><small>可立即兌換</small></div>
-            <div class="summary-card"><div class="label">可轉鑽石</div><div class="num">2,855</div><small>依目前 200:1 比值</small></div>
-            <div class="summary-card"><div class="label">待審核申請</div><div class="num">3</div><small>含旅遊與體驗型獎勵</small></div>
-            <div class="summary-card"><div class="label">即將過期</div><div class="num">18,500</div><small>30 天內到期</small></div>
+            <div class="summary-card"><div class="label">目前可用積分</div><div class="num">571,000</div><small>可直接使用</small></div>
+            <div class="summary-card"><div class="label">可兌換鑽石</div><div class="num">2,855</div><small>依目前兌換比例</small></div>
+            <div class="summary-card"><div class="label">審核中申請</div><div class="num">3</div><small>等待官方確認中</small></div>
+            <div class="summary-card"><div class="label">即將到期</div><div class="num">18,500</div><small>記得優先使用</small></div>
           </div>
 
           <div class="toolbar">
@@ -587,8 +627,8 @@
         <div class="screen hidden" data-screen-panel="convert">
           <div class="screen-top">
             <div>
-              <div class="screen-title">鑽石動態轉換器</div>
-              <div class="screen-sub">若妳想保留彈性，可以把部分積分換成鑽石；不過與其他獎勵相比，直接兌換鑽石的整體價值會較低。</div>
+              <div class="screen-title">積分換鑽石</div>
+              <div class="screen-sub">若妳想保留更高彈性，可以把部分積分兌換成鑽石；不過和其他獎勵相比，直接兌鑽的整體價值會較低。</div>
             </div>
             <div class="top-actions">
               <button class="btn btn-ghost">查看轉換紀錄</button>
@@ -599,26 +639,26 @@
             <div class="convert-card">
               <div class="convert-header">
                 <div class="icon-bubble">🔄</div>
-                <h2 class="convert-title">鑽石動態轉換器</h2>
-                <div class="convert-desc">將您的 Prestige 積分即時轉換為平台鑽石。為了鼓勵優先兌換「實體禮品、曝光資源、體驗型獎勵」，目前換算比值為 <strong>200 PTS = 1 鑽石</strong>。</div>
+                <h2 class="convert-title">積分換鑽石</h2>
+                <div class="convert-desc">妳可以把累積的積分直接兌換為平台鑽石。目前換算比例為 <strong>200 PTS = 1 鑽石</strong>，建議優先比較商城獎勵後，再選擇是否兌換。</div>
               </div>
 
               <div class="exchange-row">
                 <div class="exchange-box">
-                  <div class="k">使用積分</div>
+                  <div class="k">本次使用積分</div>
                   <div class="v" id="convertPoints">571,000</div>
                 </div>
                 <button class="arrow-btn" id="allInBtn">›</button>
                 <div class="exchange-box right">
-                  <div class="k">獲得鑽石</div>
+                  <div class="k">預計獲得鑽石</div>
                   <div class="v" id="convertDiamond">2,855</div>
                 </div>
               </div>
 
               <div class="slider-wrap">
                 <div class="slider-top">
-                  <div>轉換數量調整</div>
-                  <div style="color:var(--brand);font-weight:800;cursor:pointer;" id="allInText">ALL-IN 全部換</div>
+                  <div>調整本次兌換數量</div>
+                  <div style="color:var(--brand);font-weight:800;cursor:pointer;" id="allInText">全部兌換</div>
                 </div>
                 <input id="convertSlider" type="range" min="0" max="571000" step="1000" value="571000" />
                 <div class="slider-minmax">
@@ -628,12 +668,12 @@
               </div>
 
               <div class="warning-box">
-                ※ 提醒：目前的積分兌鑽率為 200 PTS = 1 鑽石。考量到點數價值，建議您優先兌換「實體精品」、「官方曝光」、「旅遊體驗」等高感知獎勵；若您仍希望保底回收價值，也可選擇轉換為鑽石。
+                提醒：目前的積分兌換比例為 200 PTS = 1 鑽石。若妳想把積分用在更有感的獎勵，建議優先選擇商城中的曝光、體驗或旅遊項目。
               </div>
 
               <div class="convert-actions">
-                <button class="big-btn">確認轉換至鑽石帳戶</button>
-                <div class="subtle-center">轉換後將無法回復為積分，請再次確認。</div>
+                <button class="big-btn">確認兌換為鑽石</button>
+                <div class="subtle-center">送出後將無法恢復為原本積分，請確認後再提交。</div>
               </div>
             </div>
           </div>
@@ -642,8 +682,8 @@
         <div class="screen hidden" data-screen-panel="wish">
           <div class="screen-top">
             <div>
-              <div class="screen-title">夢想實現許願池</div>
-              <div class="screen-sub">如果商城裡還沒有妳喜歡的獎勵，歡迎在這裡提交願望，官方會協助評估是否能安排。</div>
+              <div class="screen-title">夢想許願池</div>
+              <div class="screen-sub">如果商城裡還沒有妳喜歡的獎勵，歡迎在這裡提交願望，官方會依需求與可執行性評估。</div>
             </div>
             <div class="top-actions">
               <button class="btn btn-ghost">我的許願紀錄</button>
@@ -654,17 +694,17 @@
             <div class="wish-card">
               <div class="wish-head">
                 <div class="icon-bubble">✦</div>
-                <h2 class="wish-title">夢想實現許願池</h2>
-                <div class="wish-desc">想換的東西不在清單上？只要妳敢想，官方小編就會努力幫妳估價、評估可行性與所需積分。</div>
+                <h2 class="wish-title">夢想許願池</h2>
+                <div class="wish-desc">想要的獎勵不在清單上也沒關係，妳可以先把想法提交給我們，官方會協助評估是否能安排。</div>
               </div>
 
               <div class="form-grid">
                 <div class="field">
-                  <label>Item Name 獎品名稱</label>
-                  <input type="text" placeholder="例如：某品牌限量包款、演唱會門票、拍攝旅行方案..." />
+                  <label>想兌換的獎勵名稱</label>
+                  <input type="text" placeholder="例如：指定品牌包款、演唱會門票、旅行拍攝行程..." />
                 </div>
                 <div class="field">
-                  <label>Category 類型</label>
+                  <label>獎勵類型</label>
                   <select>
                     <option>精品 / 代購</option>
                     <option>旅遊 / 體驗</option>
@@ -674,13 +714,13 @@
                   </select>
                 </div>
                 <div class="field">
-                  <label>Description 詳細描述</label>
-                  <textarea placeholder="許願原因、參考連結、希望規格、預算感、想在什麼時間點兌換，都可以先寫在這裡。"></textarea>
+                  <label>補充說明</label>
+                  <textarea placeholder="可以補充想要的品牌、款式、參考連結、希望安排時間，讓我們更容易幫妳評估。"></textarea>
                 </div>
                 <div class="suggestion-box">
-                  Demo 建議流程：主播送出許願 → 後台標記待估價 → 官方回覆可兌換所需積分 / 是否可執行 → 主播確認後正式建立申請單。這樣就能避免先承諾、後無法履約的風險。
+                  送出後，官方會依需求熱度、預算與可執行性進行評估；若可安排，也會再通知妳需要的積分與後續流程。
                 </div>
-                <button class="big-btn">送出願望</button>
+                <button class="big-btn">送出許願</button>
               </div>
             </div>
           </div>
@@ -693,23 +733,23 @@
               <div class="screen-sub">這裡會顯示妳每一筆積分的取得、使用與到期資訊，方便隨時查詢。</div>
             </div>
             <div class="top-actions">
-              <button class="btn btn-ghost">下載明細</button>
+              <button class="btn btn-ghost">匯出紀錄</button>
             </div>
           </div>
 
           <div class="summary-row">
-            <div class="summary-card"><div class="label">本月行為積分</div><div class="num">100</div><small>可保留你原本的行為分概念</small></div>
-            <div class="summary-card"><div class="label">本月獲得積分</div><div class="num">31,820</div><small>互動券 / 活動 / 官方加碼</small></div>
-            <div class="summary-card"><div class="label">本月使用積分</div><div class="num">12,400</div><small>商城與轉鑽合計</small></div>
-            <div class="summary-card"><div class="label">分潤提領比例</div><div class="num">100%</div><small>若未來仍要保留可獨立顯示</small></div>
+            <div class="summary-card"><div class="label">本月累積積分</div><div class="num">100</div><small>來自多種活動與任務</small></div>
+            <div class="summary-card"><div class="label">本月新增積分</div><div class="num">31,820</div><small>互動券、活動與官方加碼</small></div>
+            <div class="summary-card"><div class="label">本月已使用積分</div><div class="num">12,400</div><small>含商城兌換與鑽石兌換</small></div>
+            <div class="summary-card"><div class="label">本月分潤提領比例</div><div class="num">100%</div><small>依平台規則顯示</small></div>
           </div>
 
           <div class="records-grid">
             <div class="card panel">
               <div class="panel-head">
                 <div>
-                  <div class="panel-title">積分帳本紀錄</div>
-                  <div class="panel-sub">建議保留「來源」與「到期日」，讓主播知道積分從哪裡來。</div>
+                  <div class="panel-title">積分紀錄</div>
+                  <div class="panel-sub">每筆積分的來源、用途與到期日都會清楚顯示。</div>
                 </div>
               </div>
               <div class="list" id="historyList"></div>
@@ -717,8 +757,8 @@
             <div class="card panel">
               <div class="panel-head">
                 <div>
-                  <div class="panel-title">我的兌換 / 轉換申請</div>
-                  <div class="panel-sub">妳送出的兌換、鑽石轉換與許願申請，都會統一顯示在這裡。</div>
+                  <div class="panel-title">我的申請紀錄</div>
+                  <div class="panel-sub">妳送出的兌換、鑽石兌換與許願申請，都會統一顯示在這裡。</div>
                 </div>
               </div>
               <div class="list" id="redeemList"></div>
@@ -931,7 +971,7 @@
       { icon: '💆‍♀️', title: 'Villa Like 按摩券', desc: '希望安排 4 月平日下午，已填寫偏好分店', status: 'pending' },
       { icon: '📣', title: '首頁 Pop Up 大張圖', desc: '素材已上傳，等待官方排期確認', status: 'approved' },
       { icon: '💎', title: '積分轉換鑽石', desc: '571,000 點 → 2,855 鑽石', status: 'delivered' },
-      { icon: '✨', title: '夢想實現許願池', desc: '提交：日本拍攝旅行 + 攝影師同行', status: 'pending' }
+      { icon: '✨', title: '夢想許願池', desc: '提交：日本拍攝旅行 + 攝影師同行', status: 'pending' }
     ];
 
     const categoryOrder = ['全部', '曝光', '體驗', '精品', '旅遊', 'SWAG 周邊'];

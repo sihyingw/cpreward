@@ -313,11 +313,54 @@
       display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 10px; color: var(--muted); font-size: 13px;
     }
     input[type="range"] {
-      width: 100%; appearance: none; height: 8px; border-radius: 999px; background: #040506; outline: none;
+  width: 100%;
+  appearance: none;
+  height: 10px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(47,224,209,0.28) 0%, rgba(126,248,238,0.95) 100%);
+  outline: none;
+  box-shadow:
+    0 0 0 1px rgba(47,224,209,0.22),
+    0 0 18px rgba(47,224,209,0.18),
+    inset 0 0 14px rgba(126,248,238,0.22);
     }
+
     input[type="range"]::-webkit-slider-thumb {
-      appearance: none; width: 22px; height: 22px; border-radius: 50%; border: 0; background: var(--brand); box-shadow: 0 0 0 4px rgba(47,224,209,0.18), 0 0 16px rgba(47,224,209,0.45); cursor: pointer;
+  appearance: none;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.7);
+  background: radial-gradient(circle at 30% 30%, #dffffb 0%, #7ef8ee 35%, var(--brand) 72%, #0ea79c 100%);
+  box-shadow:
+    0 0 0 5px rgba(47,224,209,0.18),
+    0 0 24px rgba(47,224,209,0.65),
+    0 0 42px rgba(126,248,238,0.38);
+  cursor: pointer;
     }
+
+    input[type="range"]::-moz-range-track {
+  height: 10px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(47,224,209,0.28) 0%, rgba(126,248,238,0.95) 100%);
+  box-shadow:
+    0 0 0 1px rgba(47,224,209,0.22),
+    0 0 18px rgba(47,224,209,0.18),
+    inset 0 0 14px rgba(126,248,238,0.22);
+}
+
+    input[type="range"]::-moz-range-thumb {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.7);
+  background: radial-gradient(circle at 30% 30%, #dffffb 0%, #7ef8ee 35%, var(--brand) 72%, #0ea79c 100%);
+  box-shadow:
+    0 0 0 5px rgba(47,224,209,0.18),
+    0 0 24px rgba(47,224,209,0.65),
+    0 0 42px rgba(126,248,238,0.38);
+  cursor: pointer;
+}
     .slider-minmax {
       display: flex; align-items: center; justify-content: space-between; margin-top: 10px; color: rgba(255,255,255,0.28); font-size: 12px;
     }
